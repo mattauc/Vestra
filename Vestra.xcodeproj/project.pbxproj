@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67AFEBEB2EB74E36003BBF06 /* VestraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */; };
+		67AFEBED2EB74E36003BBF06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBEC2EB74E36003BBF06 /* ContentView.swift */; };
+		67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */; };
+		67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */; };
+		67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */; };
+		67AFEC062EB74E37003BBF06 /* VestraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC052EB74E37003BBF06 /* VestraUITests.swift */; };
+		67AFEC082EB74E37003BBF06 /* VestraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67AFEBF82EB74E37003BBF06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AFEBDF2EB74E36003BBF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67AFEBE62EB74E36003BBF06;
+			remoteInfo = Vestra;
+		};
+		67AFEC022EB74E37003BBF06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67AFEBDF2EB74E36003BBF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67AFEBE62EB74E36003BBF06;
+			remoteInfo = Vestra;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67AFEBE72EB74E36003BBF06 /* Vestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraApp.swift; sourceTree = "<group>"; };
+		67AFEBEC2EB74E36003BBF06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		67AFEBF72EB74E37003BBF06 /* VestraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraTests.swift; sourceTree = "<group>"; };
+		67AFEC012EB74E37003BBF06 /* VestraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67AFEC052EB74E37003BBF06 /* VestraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITests.swift; sourceTree = "<group>"; };
+		67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67AFEBE42EB74E36003BBF06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBF42EB74E37003BBF06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBFE2EB74E37003BBF06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67AFEBDE2EB74E36003BBF06 = {
+			isa = PBXGroup;
+			children = (
+				67AFEBE92EB74E36003BBF06 /* Vestra */,
+				67AFEBFA2EB74E37003BBF06 /* VestraTests */,
+				67AFEC042EB74E37003BBF06 /* VestraUITests */,
+				67AFEBE82EB74E36003BBF06 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67AFEBE82EB74E36003BBF06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEBE72EB74E36003BBF06 /* Vestra.app */,
+				67AFEBF72EB74E37003BBF06 /* VestraTests.xctest */,
+				67AFEC012EB74E37003BBF06 /* VestraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67AFEBE92EB74E36003BBF06 /* Vestra */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */,
+				67AFEBEC2EB74E36003BBF06 /* ContentView.swift */,
+				67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */,
+				67AFEBF02EB74E37003BBF06 /* Preview Content */,
+			);
+			path = Vestra;
+			sourceTree = "<group>";
+		};
+		67AFEBF02EB74E37003BBF06 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		67AFEBFA2EB74E37003BBF06 /* VestraTests */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */,
+			);
+			path = VestraTests;
+			sourceTree = "<group>";
+		};
+		67AFEC042EB74E37003BBF06 /* VestraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC052EB74E37003BBF06 /* VestraUITests.swift */,
+				67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */,
+			);
+			path = VestraUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67AFEBE62EB74E36003BBF06 /* Vestra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67AFEC0B2EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "Vestra" */;
+			buildPhases = (
+				67AFEBE32EB74E36003BBF06 /* Sources */,
+				67AFEBE42EB74E36003BBF06 /* Frameworks */,
+				67AFEBE52EB74E36003BBF06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vestra;
+			productName = Vestra;
+			productReference = 67AFEBE72EB74E36003BBF06 /* Vestra.app */;
+			productType = "com.apple.product-type.application";
+		};
+		67AFEBF62EB74E37003BBF06 /* VestraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67AFEC0E2EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "VestraTests" */;
+			buildPhases = (
+				67AFEBF32EB74E37003BBF06 /* Sources */,
+				67AFEBF42EB74E37003BBF06 /* Frameworks */,
+				67AFEBF52EB74E37003BBF06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67AFEBF92EB74E37003BBF06 /* PBXTargetDependency */,
+			);
+			name = VestraTests;
+			productName = VestraTests;
+			productReference = 67AFEBF72EB74E37003BBF06 /* VestraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		67AFEC002EB74E37003BBF06 /* VestraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67AFEC112EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "VestraUITests" */;
+			buildPhases = (
+				67AFEBFD2EB74E37003BBF06 /* Sources */,
+				67AFEBFE2EB74E37003BBF06 /* Frameworks */,
+				67AFEBFF2EB74E37003BBF06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67AFEC032EB74E37003BBF06 /* PBXTargetDependency */,
+			);
+			name = VestraUITests;
+			productName = VestraUITests;
+			productReference = 67AFEC012EB74E37003BBF06 /* VestraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67AFEBDF2EB74E36003BBF06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					67AFEBE62EB74E36003BBF06 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					67AFEBF62EB74E37003BBF06 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 67AFEBE62EB74E36003BBF06;
+					};
+					67AFEC002EB74E37003BBF06 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 67AFEBE62EB74E36003BBF06;
+					};
+				};
+			};
+			buildConfigurationList = 67AFEBE22EB74E36003BBF06 /* Build configuration list for PBXProject "Vestra" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67AFEBDE2EB74E36003BBF06;
+			productRefGroup = 67AFEBE82EB74E36003BBF06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67AFEBE62EB74E36003BBF06 /* Vestra */,
+				67AFEBF62EB74E37003BBF06 /* VestraTests */,
+				67AFEC002EB74E37003BBF06 /* VestraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67AFEBE52EB74E36003BBF06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */,
+				67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBF52EB74E37003BBF06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBFF2EB74E37003BBF06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67AFEBE32EB74E36003BBF06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67AFEBED2EB74E36003BBF06 /* ContentView.swift in Sources */,
+				67AFEBEB2EB74E36003BBF06 /* VestraApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBF32EB74E37003BBF06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67AFEBFD2EB74E37003BBF06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67AFEC062EB74E37003BBF06 /* VestraUITests.swift in Sources */,
+				67AFEC082EB74E37003BBF06 /* VestraUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67AFEBF92EB74E37003BBF06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67AFEBE62EB74E36003BBF06 /* Vestra */;
+			targetProxy = 67AFEBF82EB74E37003BBF06 /* PBXContainerItemProxy */;
+		};
+		67AFEC032EB74E37003BBF06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67AFEBE62EB74E36003BBF06 /* Vestra */;
+			targetProxy = 67AFEC022EB74E37003BBF06 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		67AFEC092EB74E37003BBF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		67AFEC0A2EB74E37003BBF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67AFEC0C2EB74E37003BBF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Vestra/Preview Content\"";
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.Vestra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67AFEC0D2EB74E37003BBF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Vestra/Preview Content\"";
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.Vestra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		67AFEC0F2EB74E37003BBF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vestra.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vestra";
+			};
+			name = Debug;
+		};
+		67AFEC102EB74E37003BBF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vestra.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vestra";
+			};
+			name = Release;
+		};
+		67AFEC122EB74E37003BBF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Vestra;
+			};
+			name = Debug;
+		};
+		67AFEC132EB74E37003BBF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5223SVKWJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Vestra;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67AFEBE22EB74E36003BBF06 /* Build configuration list for PBXProject "Vestra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AFEC092EB74E37003BBF06 /* Debug */,
+				67AFEC0A2EB74E37003BBF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67AFEC0B2EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "Vestra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AFEC0C2EB74E37003BBF06 /* Debug */,
+				67AFEC0D2EB74E37003BBF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67AFEC0E2EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "VestraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AFEC0F2EB74E37003BBF06 /* Debug */,
+				67AFEC102EB74E37003BBF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67AFEC112EB74E37003BBF06 /* Build configuration list for PBXNativeTarget "VestraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AFEC122EB74E37003BBF06 /* Debug */,
+				67AFEC132EB74E37003BBF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67AFEBDF2EB74E36003BBF06 /* Project object */;
+}
