@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67AFEBEB2EB74E36003BBF06 /* VestraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */; };
-		67AFEBED2EB74E36003BBF06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBEC2EB74E36003BBF06 /* ContentView.swift */; };
 		67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */; };
 		67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */; };
 		67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */; };
 		67AFEC062EB74E37003BBF06 /* VestraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC052EB74E37003BBF06 /* VestraUITests.swift */; };
 		67AFEC082EB74E37003BBF06 /* VestraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */; };
+		67AFEC162EB74E59003BBF06 /* NetlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC142EB74E59003BBF06 /* NetlyApp.swift */; };
+		67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC172EB74E5E003BBF06 /* InputView.swift */; };
+		67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */; };
+		67AFEC1F2EB74E64003BBF06 /* PropertyStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC1B2EB74E64003BBF06 /* PropertyStream.swift */; };
+		67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC1C2EB74E64003BBF06 /* UserProfile.swift */; };
+		67AFEC252EB74E6E003BBF06 /* PropertyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC222EB74E6E003BBF06 /* PropertyManager.swift */; };
+		67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC232EB74E6E003BBF06 /* UserManager.swift */; };
+		67AFEC2D2EB74E73003BBF06 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC272EB74E73003BBF06 /* LoginView.swift */; };
+		67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC282EB74E73003BBF06 /* RegistrationView.swift */; };
+		67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */; };
+		67AFEC302EB74E73003BBF06 /* NetlyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +44,6 @@
 
 /* Begin PBXFileReference section */
 		67AFEBE72EB74E36003BBF06 /* Vestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraApp.swift; sourceTree = "<group>"; };
-		67AFEBEC2EB74E36003BBF06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		67AFEBF72EB74E37003BBF06 /* VestraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +51,17 @@
 		67AFEC012EB74E37003BBF06 /* VestraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AFEC052EB74E37003BBF06 /* VestraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITests.swift; sourceTree = "<group>"; };
 		67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		67AFEC142EB74E59003BBF06 /* NetlyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetlyApp.swift; sourceTree = "<group>"; };
+		67AFEC172EB74E5E003BBF06 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		67AFEC1B2EB74E64003BBF06 /* PropertyStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyStream.swift; sourceTree = "<group>"; };
+		67AFEC1C2EB74E64003BBF06 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		67AFEC222EB74E6E003BBF06 /* PropertyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyManager.swift; sourceTree = "<group>"; };
+		67AFEC232EB74E6E003BBF06 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		67AFEC272EB74E73003BBF06 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		67AFEC282EB74E73003BBF06 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetlyInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +112,12 @@
 		67AFEBE92EB74E36003BBF06 /* Vestra */ = {
 			isa = PBXGroup;
 			children = (
-				67AFEBEA2EB74E36003BBF06 /* VestraApp.swift */,
-				67AFEBEC2EB74E36003BBF06 /* ContentView.swift */,
+				67AFEC2C2EB74E73003BBF06 /* Views */,
+				67AFEC242EB74E6E003BBF06 /* ViewModels */,
+				67AFEC212EB74E68003BBF06 /* Services */,
+				67AFEC1D2EB74E64003BBF06 /* Models */,
+				67AFEC182EB74E5E003BBF06 /* Components */,
+				67AFEC152EB74E59003BBF06 /* App */,
 				67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */,
 				67AFEBF02EB74E37003BBF06 /* Preview Content */,
 			);
@@ -125,6 +147,67 @@
 				67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */,
 			);
 			path = VestraUITests;
+			sourceTree = "<group>";
+		};
+		67AFEC152EB74E59003BBF06 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC142EB74E59003BBF06 /* NetlyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		67AFEC182EB74E5E003BBF06 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC172EB74E5E003BBF06 /* InputView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		67AFEC1D2EB74E64003BBF06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */,
+				67AFEC1B2EB74E64003BBF06 /* PropertyStream.swift */,
+				67AFEC1C2EB74E64003BBF06 /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		67AFEC212EB74E68003BBF06 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		67AFEC242EB74E6E003BBF06 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC222EB74E6E003BBF06 /* PropertyManager.swift */,
+				67AFEC232EB74E6E003BBF06 /* UserManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		67AFEC292EB74E73003BBF06 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC272EB74E73003BBF06 /* LoginView.swift */,
+				67AFEC282EB74E73003BBF06 /* RegistrationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		67AFEC2C2EB74E73003BBF06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67AFEC292EB74E73003BBF06 /* Authentication */,
+				67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */,
+				67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +340,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67AFEBED2EB74E36003BBF06 /* ContentView.swift in Sources */,
-				67AFEBEB2EB74E36003BBF06 /* VestraApp.swift in Sources */,
+				67AFEC252EB74E6E003BBF06 /* PropertyManager.swift in Sources */,
+				67AFEC1F2EB74E64003BBF06 /* PropertyStream.swift in Sources */,
+				67AFEC302EB74E73003BBF06 /* NetlyInterface.swift in Sources */,
+				67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */,
+				67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */,
+				67AFEC162EB74E59003BBF06 /* NetlyApp.swift in Sources */,
+				67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */,
+				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
+				67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */,
+				67AFEC2D2EB74E73003BBF06 /* LoginView.swift in Sources */,
+				67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
