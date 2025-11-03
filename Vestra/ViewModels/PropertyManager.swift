@@ -1,6 +1,6 @@
 //
 //  PropertyManager.swift
-//  Netly
+//  Vestra
 //
 //  Created by Matthew Auciello on 2/11/2025.
 //

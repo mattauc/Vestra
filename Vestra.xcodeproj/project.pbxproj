@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
+		67725F6C2EB86D0E0049445D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F6B2EB86D0E0049445D /* FirebaseFirestore */; };
+		67725F6E2EB86D0E0049445D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F6D2EB86D0E0049445D /* FirebaseStorage */; };
+		67725F702EB86DAD0049445D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F6F2EB86DA20049445D /* AuthManager.swift */; };
 		67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */; };
 		67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */; };
 		67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */; };
 		67AFEC062EB74E37003BBF06 /* VestraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC052EB74E37003BBF06 /* VestraUITests.swift */; };
 		67AFEC082EB74E37003BBF06 /* VestraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */; };
-		67AFEC162EB74E59003BBF06 /* NetlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC142EB74E59003BBF06 /* NetlyApp.swift */; };
+		67AFEC162EB74E59003BBF06 /* VestraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC142EB74E59003BBF06 /* VestraApp.swift */; };
 		67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC172EB74E5E003BBF06 /* InputView.swift */; };
 		67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */; };
 		67AFEC1F2EB74E64003BBF06 /* PropertyStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC1B2EB74E64003BBF06 /* PropertyStream.swift */; };
@@ -22,7 +26,8 @@
 		67AFEC2D2EB74E73003BBF06 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC272EB74E73003BBF06 /* LoginView.swift */; };
 		67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC282EB74E73003BBF06 /* RegistrationView.swift */; };
 		67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */; };
-		67AFEC302EB74E73003BBF06 /* NetlyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */; };
+		67AFEC302EB74E73003BBF06 /* VestraInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEC2B2EB74E73003BBF06 /* VestraInterface.swift */; };
+		67AFEC322EB85E1B003BBF06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEC312EB85E1B003BBF06 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		67AFEBE72EB74E36003BBF06 /* Vestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -51,7 +57,7 @@
 		67AFEC012EB74E37003BBF06 /* VestraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AFEC052EB74E37003BBF06 /* VestraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITests.swift; sourceTree = "<group>"; };
 		67AFEC072EB74E37003BBF06 /* VestraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestraUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		67AFEC142EB74E59003BBF06 /* NetlyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetlyApp.swift; sourceTree = "<group>"; };
+		67AFEC142EB74E59003BBF06 /* VestraApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VestraApp.swift; sourceTree = "<group>"; };
 		67AFEC172EB74E5E003BBF06 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		67AFEC1B2EB74E64003BBF06 /* PropertyStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyStream.swift; sourceTree = "<group>"; };
@@ -61,7 +67,8 @@
 		67AFEC272EB74E73003BBF06 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		67AFEC282EB74E73003BBF06 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetlyInterface.swift; sourceTree = "<group>"; };
+		67AFEC2B2EB74E73003BBF06 /* VestraInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VestraInterface.swift; sourceTree = "<group>"; };
+		67AFEC312EB85E1B003BBF06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */,
+				67725F6C2EB86D0E0049445D /* FirebaseFirestore in Frameworks */,
+				67725F6E2EB86D0E0049445D /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +129,7 @@
 				67AFEC182EB74E5E003BBF06 /* Components */,
 				67AFEC152EB74E59003BBF06 /* App */,
 				67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */,
+				67AFEC312EB85E1B003BBF06 /* GoogleService-Info.plist */,
 				67AFEBF02EB74E37003BBF06 /* Preview Content */,
 			);
 			path = Vestra;
@@ -152,7 +163,7 @@
 		67AFEC152EB74E59003BBF06 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				67AFEC142EB74E59003BBF06 /* NetlyApp.swift */,
+				67AFEC142EB74E59003BBF06 /* VestraApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 		67AFEC242EB74E6E003BBF06 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				67725F6F2EB86DA20049445D /* AuthManager.swift */,
 				67AFEC222EB74E6E003BBF06 /* PropertyManager.swift */,
 				67AFEC232EB74E6E003BBF06 /* UserManager.swift */,
 			);
@@ -205,7 +217,7 @@
 			children = (
 				67AFEC292EB74E73003BBF06 /* Authentication */,
 				67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */,
-				67AFEC2B2EB74E73003BBF06 /* NetlyInterface.swift */,
+				67AFEC2B2EB74E73003BBF06 /* VestraInterface.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,7 +286,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					67AFEBE62EB74E36003BBF06 = {
 						CreatedOnToolsVersion = 15.4;
@@ -298,6 +310,9 @@
 				Base,
 			);
 			mainGroup = 67AFEBDE2EB74E36003BBF06;
+			packageReferences = (
+				67725F682EB86D0E0049445D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 67AFEBE82EB74E36003BBF06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,6 +331,7 @@
 			files = (
 				67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */,
 				67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */,
+				67AFEC322EB85E1B003BBF06 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,11 +357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				67AFEC252EB74E6E003BBF06 /* PropertyManager.swift in Sources */,
+				67725F702EB86DAD0049445D /* AuthManager.swift in Sources */,
 				67AFEC1F2EB74E64003BBF06 /* PropertyStream.swift in Sources */,
-				67AFEC302EB74E73003BBF06 /* NetlyInterface.swift in Sources */,
+				67AFEC302EB74E73003BBF06 /* VestraInterface.swift in Sources */,
 				67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */,
 				67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */,
-				67AFEC162EB74E59003BBF06 /* NetlyApp.swift in Sources */,
+				67AFEC162EB74E59003BBF06 /* VestraApp.swift in Sources */,
 				67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */,
 				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
 				67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */,
@@ -422,6 +439,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5223SVKWJP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -445,6 +463,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -485,6 +504,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5223SVKWJP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -501,6 +521,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -514,7 +535,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vestra/Preview Content\"";
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -543,7 +563,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vestra/Preview Content\"";
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -567,11 +586,9 @@
 		67AFEC0F2EB74E37003BBF06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
@@ -587,11 +604,9 @@
 		67AFEC102EB74E37003BBF06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
@@ -607,10 +622,8 @@
 		67AFEC122EB74E37003BBF06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraUITests;
@@ -625,10 +638,8 @@
 		67AFEC132EB74E37003BBF06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5223SVKWJP;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraUITests;
@@ -680,6 +691,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67725F682EB86D0E0049445D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67725F692EB86D0E0049445D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67725F682EB86D0E0049445D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		67725F6B2EB86D0E0049445D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67725F682EB86D0E0049445D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		67725F6D2EB86D0E0049445D /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67725F682EB86D0E0049445D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67AFEBDF2EB74E36003BBF06 /* Project object */;
 }
