@@ -17,6 +17,7 @@ struct VestraInterface: View {
         Group {
             if authManager.userSession != nil {
                 DashboardView()
+                    .onAppear { print("DEBUG: showing Dashboard (userSession != nil)") }
             } else {
                 LoginView()
             }
@@ -26,6 +27,9 @@ struct VestraInterface: View {
 
 struct NetlyInterface_Previews: PreviewProvider {
     static var previews: some View {
-        VestraInterface()
+        let auth = AuthManager()
+        return VestraInterface()
+            .environmentObject(auth)
+            .environmentObject(UserManager(authManager: auth))
     }
 }

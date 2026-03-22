@@ -8,10 +8,23 @@
 import SwiftUI
 import Firebase
 
+@MainActor
+final class VestraAppModel: ObservableObject {
+    let authManager: AuthManager
+    let userManager: UserManager
+    let pageStore: PageStore
+    
+    init() {
+        let auth = AuthManager()
+        self.authManager = auth
+        self.userManager = UserManager(authManager: auth)
+        self.pageStore = PageStore(authManager: auth)
+    }
+}
+
 @main
 struct VestraApp: App {
-    @StateObject var userManager = UserManager()
-    @StateObject var authManager = AuthManager()
+    @StateObject private var appModel = VestraAppModel()
     
     init() {
         FirebaseApp.configure()
@@ -20,8 +33,9 @@ struct VestraApp: App {
     var body: some Scene {
         WindowGroup {
             VestraInterface()
-                .environmentObject(userManager)
-                .environmentObject(authManager)
+                .environmentObject(appModel.userManager)
+                .environmentObject(appModel.authManager)
+                .environmentObject(appModel.pageStore)
         }
     }
 }

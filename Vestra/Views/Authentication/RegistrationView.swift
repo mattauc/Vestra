@@ -19,47 +19,7 @@ struct RegistrationView: View {
         VStack {
             //Image()
             
-            //form fields
-            
-            VStack(spacing: 24) {
-                InputView(text: $email,
-                          title: "Email Address",
-                          placeholder: "name@example.com")
-                .autocapitalization(.none)
-                InputView(text: $fullName,
-                          title: "Full Name",
-                          placeholder: "Enter your full name")
-                .autocapitalization(.none)
-                
-                InputView(text: $password,
-                          title: "Password",
-                          placeholder: "Enter your password",
-                          isSecureField: true)
-                
-                ZStack(alignment: .trailing) {
-                    InputView(text: $confirmPassword,
-                              title: "Confirm Password",
-                              placeholder: "Enter your password",
-                              isSecureField: true)
-                    
-                    if !password.isEmpty && !confirmPassword.isEmpty {
-                        if password == confirmPassword {
-                            Image(systemName: "checkmark.circle.fill")
-                                .imageScale(.large)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(.systemGreen))
-                        } else {
-                            Image(systemName: "xmark.circle.fill")
-                                .imageScale(.large)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(.systemRed))
-                        }
-                    }
-                }
-                
-            }
-            .padding(.horizontal)
-            .padding(.top, 12)
+            userInputSection
             
             Button {
                 Task {
@@ -81,8 +41,7 @@ struct RegistrationView: View {
             .padding(.top, 24)
             
             Spacer()
-            
-            
+        
             Button {
                 dismiss()
             } label: {
@@ -94,6 +53,48 @@ struct RegistrationView: View {
                 .font(.system(size: 14))
             }
         }
+    }
+    
+    var userInputSection: some View {
+        VStack(spacing: 24) {
+            InputView(text: $email,
+                      title: "Email Address",
+                      placeholder: "name@example.com")
+            .autocapitalization(.none)
+            InputView(text: $fullName,
+                      title: "Full Name",
+                      placeholder: "Enter your full name")
+            .autocapitalization(.none)
+            
+            InputView(text: $password,
+                      title: "Password",
+                      placeholder: "Enter your password",
+                      isSecureField: true)
+            
+            ZStack(alignment: .trailing) {
+                InputView(text: $confirmPassword,
+                          title: "Confirm Password",
+                          placeholder: "Enter your password",
+                          isSecureField: true)
+                
+                if !password.isEmpty && !confirmPassword.isEmpty {
+                    if password == confirmPassword {
+                        Image(systemName: "checkmark.circle.fill")
+                            .imageScale(.large)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(.systemGreen))
+                    } else {
+                        Image(systemName: "xmark.circle.fill")
+                            .imageScale(.large)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(.systemRed))
+                    }
+                }
+            }
+            
+        }
+        .padding(.horizontal)
+        .padding(.top, 12)
     }
 }
 

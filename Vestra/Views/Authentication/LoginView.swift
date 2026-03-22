@@ -15,24 +15,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                //Image()
-                
-                //form fields
-                
-                VStack(spacing: 24) {
-                    InputView(text: $email,
-                              title: "Email Address",
-                              placeholder: "name@example.com")
-                    .autocapitalization(.none)
-                    
-                    InputView(text: $password,
-                              title: "Password",
-                              placeholder: "Enter your password", 
-                              isSecureField: true)
-    
-                }
-                .padding(.horizontal)
-                .padding(.top, 12)
+                userInputSection
                 
                 Button {
                     Task {
@@ -69,6 +52,23 @@ struct LoginView: View {
                 }
             }
         }
+    }
+    
+    var userInputSection: some View {
+        VStack(spacing: 24) {
+            InputView(text: $email,
+                      title: "Email Address",
+                      placeholder: "name@example.com")
+            .autocapitalization(.none)
+            
+            InputView(text: $password,
+                      title: "Password",
+                      placeholder: "Enter your password",
+                      isSecureField: true)
+
+        }
+        .padding(.horizontal)
+        .padding(.top, 12)
     }
 }
 
