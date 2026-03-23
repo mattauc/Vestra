@@ -12,48 +12,42 @@ struct DashboardView: View {
     @EnvironmentObject var userManager: UserManager
     @EnvironmentObject var pageStore: PageStore
     
-    @State private var addPageNavigationID: UUID?
+    @State private var selectedTab = 0
     
     var body: some View {
-        NavigationStack {
-            Group {
-                if authManager.currentUser != nil {
-                    VStack {
-                        profileInformation
-                        Button {
-                            authManager.signOut()
-                        } label: {
-                            HStack {
-                                Text("SIGN OUT")
-                                    .fontWeight(.semibold)
-                                Image(systemName: "arrow.left")
-                            }
-                            .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width - 32, height: 48)
-                            .background(.red)
+        Group {
+            if authManager.currentUser != nil {
+                TabView(selection: $selectedTab) {
+                    dashboardView
+                        .tabItem {
+                            Label("Home", systemImage: "house")
                         }
-                        Button {
-                            let newPage = pageStore.createPage()
-                            addPageNavigationID = newPage.id
-                        } label: {
-                            HStack {
-                                Text("ADD PAGE")
-                                    .fontWeight(.semibold)
-                                Image(systemName: "plus.circle.fill")
-                            }
-                            .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width - 32, height: 48)
-                            .background(.blue)
+                        .tag(0)
+                    PageStoreView()
+                        .tabItem {
+                            Label("Pages", systemImage: "square.grid.2x2")
                         }
-                        .navigationDestination(item: $addPageNavigationID) { pageID in
-                            PropertyPageView(pageID: pageID)}
-                    }
-                } else {
-                    loadingProfileView
+                        .tag(1)
+                    SettingsView()
+                        .tabItem {
+                            Label("Settings", systemImage: "gear")
+                        }
+                        .tag(2)
                 }
+            } else {
+                loadingProfileView
             }
         }
     }
+    
+    var dashboardView: some View {
+        VStack {
+            profileInformation
+            signOutButton
+
+        }
+    }
+    
     
     var profileInformation: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -121,6 +115,21 @@ struct DashboardView: View {
         .padding()
         .task {
             await authManager.fetchUser()
+        }
+    }
+    
+    var signOutButton: some View {
+        Button {
+            authManager.signOut()
+        } label: {
+            HStack {
+                Text("SIGN OUT")
+                    .fontWeight(.semibold)
+                Image(systemName: "arrow.left")
+            }
+            .foregroundColor(.white)
+            .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+            .background(.red)
         }
     }
 

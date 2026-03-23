@@ -13,6 +13,10 @@
 		67725F702EB86DAD0049445D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F6F2EB86DA20049445D /* AuthManager.swift */; };
 		67725F782EB8A1980049445D /* PageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F772EB8A1980049445D /* PageStore.swift */; };
 		67725F7A2F6FB9E80049445D /* PropertyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F792F6FB9E80049445D /* PropertyPageView.swift */; };
+		67725F7C2F6FE1500049445D /* PageStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F7B2F6FE1500049445D /* PageStoreView.swift */; };
+		67725F7E2F6FE1740049445D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F7D2F6FE1740049445D /* SettingsView.swift */; };
+		67725F822F70B0590049445D /* PortfolioPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F812F70B0590049445D /* PortfolioPage.swift */; };
+		67725F852F70F8FF0049445D /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F842F70F8FF0049445D /* PageView.swift */; };
 		67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */; };
 		67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */; };
 		67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */; };
@@ -52,6 +56,10 @@
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		67725F772EB8A1980049445D /* PageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStore.swift; sourceTree = "<group>"; };
 		67725F792F6FB9E80049445D /* PropertyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageView.swift; sourceTree = "<group>"; };
+		67725F7B2F6FE1500049445D /* PageStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStoreView.swift; sourceTree = "<group>"; };
+		67725F7D2F6FE1740049445D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		67725F812F70B0590049445D /* PortfolioPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPage.swift; sourceTree = "<group>"; };
+		67725F842F70F8FF0049445D /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		67AFEBE72EB74E36003BBF06 /* Vestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				67725F792F6FB9E80049445D /* PropertyPageView.swift */,
+				67725F7B2F6FE1500049445D /* PageStoreView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -182,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				67AFEC172EB74E5E003BBF06 /* InputView.swift */,
+				67725F842F70F8FF0049445D /* PageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -192,6 +202,7 @@
 				67AFEC1A2EB74E64003BBF06 /* Dashboard.swift */,
 				67AFEC1B2EB74E64003BBF06 /* PropertyPage.swift */,
 				67AFEC1C2EB74E64003BBF06 /* UserProfile.swift */,
+				67725F812F70B0590049445D /* PortfolioPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 				67AFEC292EB74E73003BBF06 /* Authentication */,
 				67AFEC2A2EB74E73003BBF06 /* DashboardView.swift */,
 				67AFEC2B2EB74E73003BBF06 /* VestraInterface.swift */,
+				67725F7D2F6FE1740049445D /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -367,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67725F7E2F6FE1740049445D /* SettingsView.swift in Sources */,
 				67725F782EB8A1980049445D /* PageStore.swift in Sources */,
 				67725F7A2F6FB9E80049445D /* PropertyPageView.swift in Sources */,
 				67725F702EB86DAD0049445D /* AuthManager.swift in Sources */,
@@ -375,11 +388,14 @@
 				67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */,
 				67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */,
 				67AFEC162EB74E59003BBF06 /* VestraApp.swift in Sources */,
+				67725F822F70B0590049445D /* PortfolioPage.swift in Sources */,
 				67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */,
 				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
 				67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */,
 				67AFEC2D2EB74E73003BBF06 /* LoginView.swift in Sources */,
 				67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */,
+				67725F852F70F8FF0049445D /* PageView.swift in Sources */,
+				67725F7C2F6FE1500049445D /* PageStoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
