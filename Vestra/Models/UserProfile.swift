@@ -13,7 +13,7 @@ struct UserProfile: Identifiable, Codable {
     let email: String
     
     var networth: Int = 1000000
-    var salary: Double = 200000.00
+    var salary: Double = 1000000
     
     
     var initials: String {

@@ -16,11 +16,14 @@ struct PageStoreView: View {
 //    @State private var yOffset: CGFloat = 0
     @State private var degrees: Double = 0
     
+    @State private var sheetPresented = false
+    
     
     var body: some View {
-        Group {
+        VStack {
             if pageStore.pages.isEmpty {
                 emptyPageDisplay
+                    .padding(.top, 300)
             } else {
                 VStack {
                     ZStack {
@@ -29,9 +32,16 @@ struct PageStoreView: View {
                         }
                     }
                     .padding(.vertical, 30)
-                    addPageButton
                 }
             }
+            NavigationStack {
+                addPageButton
+            }
+            .sheet(isPresented: $sheetPresented) {
+                PageCreation(sheetPresented: $sheetPresented)
+                    .presentationDetents([.large, .large])
+            }
+            
         }
         .onChange(of: pageStore.pages.count) { _, newCount in
             guard newCount > 0 else {
@@ -43,12 +53,13 @@ struct PageStoreView: View {
     }
     
     var emptyPageDisplay: some View {
-        addPageButton
+        Text("PLACEHOLDER EMPTY PAGES")
     }
     
     var addPageButton: some View {
         Button {
-            pageStore.createPage(type: .property)
+            sheetPresented = true
+//            pageStore.createPage(type: .property)
         } label: {
             HStack {
                 Text("ADD PAGE")

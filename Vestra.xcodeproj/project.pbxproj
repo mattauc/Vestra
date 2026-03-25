@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671D952F2F736EB900980992 /* PageCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D952E2F736EB900980992 /* PageCreation.swift */; };
+		671D95312F738EFA00980992 /* PageTypeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95302F738EFA00980992 /* PageTypeTab.swift */; };
+		671D95332F73954E00980992 /* ETFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95322F73954E00980992 /* ETFPage.swift */; };
+		671D95352F73955C00980992 /* CryptoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95342F73955C00980992 /* CryptoPage.swift */; };
 		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
 		67725F6C2EB86D0E0049445D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F6B2EB86D0E0049445D /* FirebaseFirestore */; };
 		67725F6E2EB86D0E0049445D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F6D2EB86D0E0049445D /* FirebaseStorage */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		671D952E2F736EB900980992 /* PageCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCreation.swift; sourceTree = "<group>"; };
+		671D95302F738EFA00980992 /* PageTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTypeTab.swift; sourceTree = "<group>"; };
+		671D95322F73954E00980992 /* ETFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPage.swift; sourceTree = "<group>"; };
+		671D95342F73955C00980992 /* CryptoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPage.swift; sourceTree = "<group>"; };
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		67725F772EB8A1980049445D /* PageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStore.swift; sourceTree = "<group>"; };
 		67725F792F6FB9E80049445D /* PropertyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageView.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 			children = (
 				67725F792F6FB9E80049445D /* PropertyPageView.swift */,
 				67725F7B2F6FE1500049445D /* PageStoreView.swift */,
+				671D952E2F736EB900980992 /* PageCreation.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 			children = (
 				67AFEC172EB74E5E003BBF06 /* InputView.swift */,
 				67725F842F70F8FF0049445D /* PageView.swift */,
+				671D95302F738EFA00980992 /* PageTypeTab.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -203,6 +213,8 @@
 				67AFEC1B2EB74E64003BBF06 /* PropertyPage.swift */,
 				67AFEC1C2EB74E64003BBF06 /* UserProfile.swift */,
 				67725F812F70B0590049445D /* PortfolioPage.swift */,
+				671D95322F73954E00980992 /* ETFPage.swift */,
+				671D95342F73955C00980992 /* CryptoPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,16 +398,20 @@
 				67AFEC1F2EB74E64003BBF06 /* PropertyPage.swift in Sources */,
 				67AFEC302EB74E73003BBF06 /* VestraInterface.swift in Sources */,
 				67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */,
+				671D95352F73955C00980992 /* CryptoPage.swift in Sources */,
 				67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */,
 				67AFEC162EB74E59003BBF06 /* VestraApp.swift in Sources */,
 				67725F822F70B0590049445D /* PortfolioPage.swift in Sources */,
 				67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */,
+				671D952F2F736EB900980992 /* PageCreation.swift in Sources */,
+				671D95332F73954E00980992 /* ETFPage.swift in Sources */,
 				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
 				67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */,
 				67AFEC2D2EB74E73003BBF06 /* LoginView.swift in Sources */,
 				67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */,
 				67725F852F70F8FF0049445D /* PageView.swift in Sources */,
 				67725F7C2F6FE1500049445D /* PageStoreView.swift in Sources */,
+				671D95312F738EFA00980992 /* PageTypeTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,8 +41,8 @@ struct PageView: View {
         switch page {
         case .property(let p):
             PropertyPageView(pageId: p.id, pageIndex: $pageIndex)
-        // case .etf(let e):
-        //     ETFPageView(page: e)
+        case .etf, .crypto:
+            EmptyView() // TODO: ETFPageView / CryptoPageView
         }
     }
 }
