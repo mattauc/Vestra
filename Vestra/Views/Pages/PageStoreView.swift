@@ -17,31 +17,41 @@ struct PageStoreView: View {
     @State private var degrees: Double = 0
     
     @State private var sheetPresented = false
+    @State var path = NavigationPath()
     
     
     var body: some View {
-        VStack {
-            if pageStore.pages.isEmpty {
-                emptyPageDisplay
-                    .padding(.top, 300)
-            } else {
-                VStack {
-                    ZStack {
-                        ForEach(pageStore.pages) { page in
-                            PageView(page: page, pageIndex: $pageIndex)
+        NavigationStack(path: $path) {
+            VStack {
+                if pageStore.pages.isEmpty {
+                    emptyPageDisplay
+                        .padding(.top, 300)
+                } else {
+                        ZStack {
+                            ForEach(pageStore.pages) { page in
+                                PageView(page: page, pageIndex: $pageIndex, path: $path)
+                            }
                         }
-                    }
-                    .padding(.vertical, 30)
+                        .padding(.vertical, 30)
+                }
+                NavigationStack {
+                    addPageButton
+                }
+                .sheet(isPresented: $sheetPresented) {
+                    PageCreation(sheetPresented: $sheetPresented)
+                        .presentationDetents([.large, .large])
                 }
             }
-            NavigationStack {
-                addPageButton
+            .navigationDestination(for: PortfolioPage.self) { page in
+                switch page {
+                case .property(let p):
+                    PropertyPageView(pageId: p.id, pageIndex: $pageIndex)
+                case .etf(let e):
+                    ETFPageView(pageId: e.id, pageIndex: $pageIndex)
+                case .crypto(_):
+                    EmptyView() // or CryptoPageView
+                }
             }
-            .sheet(isPresented: $sheetPresented) {
-                PageCreation(sheetPresented: $sheetPresented)
-                    .presentationDetents([.large, .large])
-            }
-            
         }
         .onChange(of: pageStore.pages.count) { _, newCount in
             guard newCount > 0 else {

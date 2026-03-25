@@ -11,6 +11,8 @@ struct PageView: View {
     
     var page: PortfolioPage
     @Binding var pageIndex: Int
+    @Binding var path: NavigationPath
+    
     @State private var xOffset: CGFloat = 0
 //    @State private var yOffset: CGFloat = 0
     @State private var degrees: Double = 0
@@ -24,11 +26,14 @@ struct PageView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.black, lineWidth: 10)
                 )
-                .background(Color.cyan)
+                
                 .offset(x: xOffset)
                 .rotationEffect(.degrees(degrees))
                 .animation(.snappy, value: xOffset)
-                .gesture(
+                .onTapGesture {
+                    path = NavigationPath([page])
+                }
+                .simultaneousGesture(
                     DragGesture()
                         .onChanged(onDragChanged)
                         .onEnded(onDragEnded)
@@ -41,7 +46,9 @@ struct PageView: View {
         switch page {
         case .property(let p):
             PropertyPageView(pageId: p.id, pageIndex: $pageIndex)
-        case .etf, .crypto:
+        case .etf(let e):
+            ETFPageView(pageId: e.id, pageIndex: $pageIndex)
+        case .crypto:
             EmptyView() // TODO: ETFPageView / CryptoPageView
         }
     }
@@ -76,11 +83,13 @@ private extension PageView {
     var pageHeight: CGFloat {
         UIScreen.main.bounds.height / 1.45
     }
+    
 }
 
 #Preview {
     @Previewable @State var pageIndex = 0
+    @Previewable @State var path = NavigationPath()
     let auth = AuthManager()
-    return PageView(page: .property(PropertyPage()), pageIndex: $pageIndex)
+    return PageView(page: .property(PropertyPage()), pageIndex: $pageIndex, path: $path)
         .environmentObject(PageStore(authManager: auth))
 }

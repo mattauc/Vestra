@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CryptoPage: Codable, Equatable, PagePayload {
+struct CryptoPage: Codable, Equatable, PagePayload, Hashable {
     var id = UUID()
     var title: String = ""
     var activeInvestment: Bool = true

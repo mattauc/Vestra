@@ -16,29 +16,31 @@ struct PageTypeTab: View {
     var availableYet: Bool = false
     
     var body: some View {
-        Button {
-            pageStore.createPage(newPage: portfolioType)
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color(.secondarySystemBackground))
-                    .frame(height: 160)
-                    .shadow(radius: 4, x: 1, y: 5)
-                HStack {
-                    portfolioImage
-                        .font(.largeTitle)
-                        .foregroundStyle(availableYet ? Color.blue : Color.red)
-                        .padding(.horizontal)
-                    Text(portfolioType.kindLabel)
-                        .font(.largeTitle)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(.largeTitle)
-                        .padding(.horizontal)
+        NavigationStack {
+            Button {
+                pageStore.createPage(newPage: portfolioType)
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(Color(.secondarySystemBackground))
+                        .frame(height: 160)
+                        .shadow(radius: 4, x: 1, y: 5)
+                    HStack {
+                        portfolioImage
+                            .font(.largeTitle)
+                            .foregroundStyle(availableYet ? Color.blue : Color.red)
+                            .padding(.horizontal)
+                        Text(portfolioType.kindLabel)
+                            .font(.largeTitle)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.largeTitle)
+                            .padding(.horizontal)
+                    }
                 }
             }
+            .disabled(!availableYet)
         }
-        .disabled(!availableYet)
     }
 }
 

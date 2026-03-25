@@ -13,7 +13,7 @@ enum PageType {
     case crypto
 }
 
-enum PortfolioPage: Identifiable, Codable, Equatable {
+enum PortfolioPage: Identifiable, Codable, Equatable, Hashable {
     case property(PropertyPage)
     case etf(ETFPage)
     case crypto(CryptoPage)

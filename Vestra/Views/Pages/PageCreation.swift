@@ -17,7 +17,7 @@ struct PageCreation: View {
             VStack {
                 PageTypeTab(portfolioImage: Image(systemName: "plus.circle.fill"), portfolioType: .property(PropertyPage()), availableYet: true)
                 
-                PageTypeTab(portfolioImage: Image(systemName: "lock.fill"), portfolioType: .etf(ETFPage()))
+                PageTypeTab(portfolioImage: Image(systemName: "lock.fill"), portfolioType: .etf(ETFPage()), availableYet: true)
                 
                 PageTypeTab(portfolioImage: Image(systemName: "lock.fill"), portfolioType: .crypto(CryptoPage()))
             }

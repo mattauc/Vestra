@@ -1,13 +1,13 @@
 //
-//  PropertyPageView.swift
+//  ETFPageView.swift
 //  Vestra
 //
-//  Created by Matthew Auciello on 22/3/2026.
+//  Created by Matthew Auciello on 25/3/2026.
 //
 
 import SwiftUI
 
-struct PropertyPageView: View {
+struct ETFPageView: View {
     
     @EnvironmentObject private var pageStore: PageStore
     
@@ -16,12 +16,13 @@ struct PropertyPageView: View {
     
     var body: some View {
         ZStack {
-            Color(.mint)
+            Color(.red)
             VStack {
-                Text("PROPERTY" + " \(pageId)")
+                Text("ETF" + " \(pageId)")
                 closeButton
             }
         }
+
     }
     
     var closeButton: some View {
@@ -42,11 +43,6 @@ struct PropertyPageView: View {
     }
 }
 
-#Preview {
-    @Previewable @State var pageIndex = 0
-    let auth = AuthManager()
-    auth.currentUser = UserProfile.MOCK_USER
-    
-    return PropertyPageView(pageId: UUID(), pageIndex: $pageIndex)
-        .environmentObject(PageStore(authManager: auth))
-}
+//#Preview {
+//    ETFPageView()
+//}
