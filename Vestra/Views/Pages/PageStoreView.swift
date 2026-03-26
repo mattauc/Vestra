@@ -34,20 +34,22 @@ struct PageStoreView: View {
                         }
                         .padding(.vertical, 30)
                 }
-                NavigationStack {
-                    addPageButton
-                }
-                .sheet(isPresented: $sheetPresented) {
-                    PageCreation(sheetPresented: $sheetPresented)
-                        .presentationDetents([.large, .large])
-                }
+                addPageButton
             }
             .navigationDestination(for: PortfolioPage.self) { page in
+                
+                
+                
                 switch page {
                 case .property(let p):
-                    PropertyPageView(pageId: p.id, pageIndex: $pageIndex)
+                    PropertyPageView(
+                            manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
+                            pageId: p.id,
+                            pageIndex: $pageIndex,
+                            path: $path
+                        )
                 case .etf(let e):
-                    ETFPageView(pageId: e.id, pageIndex: $pageIndex)
+                    ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
                 case .crypto(_):
                     EmptyView() // or CryptoPageView
                 }
@@ -60,6 +62,10 @@ struct PageStoreView: View {
             }
             pageIndex = min(pageIndex, newCount - 1)
         }
+        .sheet(isPresented: $sheetPresented) {
+            PageCreation(sheetPresented: $sheetPresented, path: $path)
+                .presentationDetents([.large, .large])
+        }
     }
     
     var emptyPageDisplay: some View {
@@ -69,7 +75,6 @@ struct PageStoreView: View {
     var addPageButton: some View {
         Button {
             sheetPresented = true
-//            pageStore.createPage(type: .property)
         } label: {
             HStack {
                 Text("ADD PAGE")

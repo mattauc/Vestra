@@ -11,15 +11,34 @@ struct PageCreation: View {
     
     @EnvironmentObject private var pageStore: PageStore
     @Binding var sheetPresented: Bool
+    @Binding var path: NavigationPath
     
     var body: some View {
         NavigationStack {
             VStack {
-                PageTypeTab(portfolioImage: Image(systemName: "plus.circle.fill"), portfolioType: .property(PropertyPage()), availableYet: true)
+
+                PageTypeTab(
+                    portfolioImage: Image(systemName: "plus.circle.fill"),
+                    portfolioType: .property(PropertyPage()),
+                    availableYet: true,
+                    sheetPresented: $sheetPresented,
+                    path: $path
+                )
                 
-                PageTypeTab(portfolioImage: Image(systemName: "lock.fill"), portfolioType: .etf(ETFPage()), availableYet: true)
-                
-                PageTypeTab(portfolioImage: Image(systemName: "lock.fill"), portfolioType: .crypto(CryptoPage()))
+                PageTypeTab(
+                    portfolioImage: Image(systemName: "lock.fill"),
+                    portfolioType: .etf(ETFPage()),
+                    availableYet: true,
+                    sheetPresented: $sheetPresented,
+                    path: $path
+                )
+
+                PageTypeTab(
+                    portfolioImage: Image(systemName: "lock.fill"),
+                    portfolioType: .crypto(CryptoPage()),
+                    sheetPresented: $sheetPresented,
+                    path: $path
+                )
             }
             .padding()
             .navigationTitle("Investment stream")
@@ -35,7 +54,8 @@ struct PageCreation: View {
 }
 
 #Preview {
+    @Previewable @State var path = NavigationPath()
     let auth = AuthManager()
-    PageCreation(sheetPresented: .constant(true))
+    PageCreation(sheetPresented: .constant(true), path: $path)
         .environmentObject(PageStore(authManager: auth))
 }

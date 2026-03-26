@@ -13,6 +13,7 @@ struct ETFPageView: View {
     
     let pageId: UUID
     @Binding var pageIndex: Int
+    @Binding var path: NavigationPath
     
     var body: some View {
         ZStack {
@@ -27,6 +28,9 @@ struct ETFPageView: View {
     
     var closeButton: some View {
         Button {
+            if path.count != 0 {
+                self.path.removeLast()
+            }
             pageStore.deletePage(id: pageId)
             if pageStore.pages.isEmpty {
                     pageIndex = 0

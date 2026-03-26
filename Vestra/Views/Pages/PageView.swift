@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PageView: View {
     
+    @EnvironmentObject var pageStore: PageStore
+    
     var page: PortfolioPage
     @Binding var pageIndex: Int
     @Binding var path: NavigationPath
@@ -45,9 +47,14 @@ struct PageView: View {
     private func pageView(for page: PortfolioPage) -> some View {
         switch page {
         case .property(let p):
-            PropertyPageView(pageId: p.id, pageIndex: $pageIndex)
+            PropertyPageView(
+                    manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
+                    pageId: p.id,
+                    pageIndex: $pageIndex,
+                    path: $path
+                )
         case .etf(let e):
-            ETFPageView(pageId: e.id, pageIndex: $pageIndex)
+            ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
         case .crypto:
             EmptyView() // TODO: ETFPageView / CryptoPageView
         }

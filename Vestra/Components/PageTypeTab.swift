@@ -14,11 +14,16 @@ struct PageTypeTab: View {
     var portfolioImage: Image
     var portfolioType: PortfolioPage
     var availableYet: Bool = false
+    @Binding var sheetPresented: Bool
+    @Binding var path: NavigationPath
     
     var body: some View {
         NavigationStack {
             Button {
-                pageStore.createPage(newPage: portfolioType)
+                
+                let newPage = pageStore.createPage(newPage: portfolioType)
+                path = NavigationPath([newPage])
+                sheetPresented = false
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -45,7 +50,15 @@ struct PageTypeTab: View {
 }
 
 #Preview {
+    @Previewable @State var path = NavigationPath()
+    @Previewable @State var sheetPresented = true
     let auth = AuthManager()
-    PageTypeTab(portfolioImage: Image(systemName: "plus.circle.fill"), portfolioType: .property(PropertyPage()), availableYet: true)
+    PageTypeTab(
+        portfolioImage: Image(systemName: "plus.circle.fill"),
+        portfolioType: .property(PropertyPage()),
+        availableYet: true,
+        sheetPresented: $sheetPresented,
+        path: $path
+    )
         .environmentObject(PageStore(authManager: auth))
 }
