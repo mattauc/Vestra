@@ -52,6 +52,14 @@ extension PortfolioPage {
         case .crypto: return "Crypto"
         }
     }
+    
+    var kindDescription: String {
+        switch self {
+        case .property: return "Track properties, loans & equity"
+        case .etf:      return "Monitor index funds & returns"
+        case .crypto:   return "Follow your digital assets"
+        }
+    }
 }
 
 protocol PagePayload {

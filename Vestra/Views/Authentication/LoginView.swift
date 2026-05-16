@@ -27,10 +27,10 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                         Image(systemName: "arrow.right")
                     }
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.theme.onAccent)
                     .frame(width: UIScreen.main.bounds.width - 32, height: 48)
                 }
-                .background(Color(.systemBlue))
+                .background(Color.theme.accent)
                 .disabled(!formIsValid)
                 .opacity(formIsValid ? 1.0 : 0.5)
                 .cornerRadius(10)

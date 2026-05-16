@@ -17,12 +17,13 @@ struct ETFPageView: View {
     
     var body: some View {
         ZStack {
-            Color(.red)
+            Color.theme.background
             VStack {
                 Text("ETF" + " \(pageId)")
                 closeButton
             }
         }
+        .ignoresSafeArea()
 
     }
     

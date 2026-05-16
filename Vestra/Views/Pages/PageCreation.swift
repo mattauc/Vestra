@@ -16,32 +16,44 @@ struct PageCreation: View {
     var body: some View {
         NavigationStack {
             VStack {
-
+                Text("Create a page.")
+                    .font(Font.theme.display(50).bold())
+                          .padding(.bottom, 8)
+                Text("PORTFOLIO TYPE")
+                    .font(Font.theme.mono(20))
+                    .tracking(1.4)
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical)
                 PageTypeTab(
-                    portfolioImage: Image(systemName: "plus.circle.fill"),
+                    portfolioImage: Image(systemName: "house"),
                     portfolioType: .property(PropertyPage()),
                     availableYet: true,
                     sheetPresented: $sheetPresented,
                     path: $path
                 )
+                .padding(.bottom, 25)
                 
                 PageTypeTab(
-                    portfolioImage: Image(systemName: "lock.fill"),
+                    portfolioImage: Image(systemName: "chart.bar.fill"),
                     portfolioType: .etf(ETFPage()),
                     availableYet: true,
                     sheetPresented: $sheetPresented,
                     path: $path
                 )
+                .padding(.bottom, 25)
 
                 PageTypeTab(
-                    portfolioImage: Image(systemName: "lock.fill"),
+                    portfolioImage: Image(systemName: "bitcoinsign.circle.fill"),
                     portfolioType: .crypto(CryptoPage()),
                     sheetPresented: $sheetPresented,
                     path: $path
                 )
+                .padding(.bottom, 25)
             }
             .padding()
-            .navigationTitle("Investment stream")
+            .navigationBarTitleDisplayMode(.inline)
+            .font(Font.theme.display(40))
             .toolbar {
                 Button {
                     sheetPresented = false

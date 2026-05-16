@@ -20,44 +20,19 @@ struct PageView: View {
     @State private var degrees: Double = 0
     
     var body: some View {
-        ZStack {
-            pageView(for: page)
-                .frame(width: pageWidth, height: pageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 10)
-                )
-                
-                .offset(x: xOffset)
-                .rotationEffect(.degrees(degrees))
-                .animation(.snappy, value: xOffset)
-                .onTapGesture {
-                    path = NavigationPath([page])
-                }
-                .simultaneousGesture(
-                    DragGesture()
-                        .onChanged(onDragChanged)
-                        .onEnded(onDragEnded)
-                )
-        }
-    }
-    
-    @ViewBuilder
-    private func pageView(for page: PortfolioPage) -> some View {
-        switch page {
-        case .property(let p):
-            PropertyPageView(
-                    manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
-                    pageId: p.id,
-                    pageIndex: $pageIndex,
-                    path: $path
-                )
-        case .etf(let e):
-            ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
-        case .crypto:
-            EmptyView() // TODO: ETFPageView / CryptoPageView
-        }
+        PortfolioCardFace(page: page)
+            .frame(width: pageWidth, height: pageHeight)
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .shadow(color: .black.opacity(0.18), radius: 20, x: 0, y: 10)
+            .offset(x: xOffset)
+            .rotationEffect(.degrees(degrees))
+            .animation(.snappy, value: xOffset)
+            .onTapGesture { path = NavigationPath([page]) }
+            .simultaneousGesture(
+                DragGesture()
+                    .onChanged(onDragChanged)
+                    .onEnded(onDragEnded)
+            )
     }
 }
 

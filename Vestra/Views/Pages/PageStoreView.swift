@@ -21,69 +21,71 @@ struct PageStoreView: View {
     
     
     var body: some View {
-        NavigationStack(path: $path) {
-            VStack {
-                if pageStore.pages.isEmpty {
-                    emptyPageDisplay
-                        .padding(.top, 300)
-                } else {
-                        ZStack {
-                            ForEach(pageStore.pages) { page in
-                                PageView(page: page, pageIndex: $pageIndex, path: $path)
+        VStack {
+            NavigationStack(path: $path) {
+                VStack {
+                    if pageStore.pages.isEmpty {
+                        emptyPageDisplay
+                            .padding(.top, 300)
+                    } else {
+                            ZStack {
+                                ForEach(pageStore.pages) { page in
+                                    PageView(page: page, pageIndex: $pageIndex, path: $path)
+                                }
                             }
-                        }
-                        .padding(.vertical, 30)
+                            .padding(.vertical, 30)
+                    }
+                    addPageButton
+                        .padding()
                 }
-                addPageButton
-            }
-            .navigationDestination(for: PortfolioPage.self) { page in
-                
-                
-                
-                switch page {
-                case .property(let p):
-                    PropertyPageView(
-                            manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
-                            pageId: p.id,
-                            pageIndex: $pageIndex,
-                            path: $path
-                        )
-                case .etf(let e):
-                    ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
-                case .crypto(_):
-                    EmptyView() // or CryptoPageView
+                .navigationDestination(for: PortfolioPage.self) { page in
+                    switch page {
+                    case .property(let p):
+                        PropertyPageView(
+                                manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
+                                pageId: p.id,
+                                pageIndex: $pageIndex,
+                                path: $path
+                            )
+                    case .etf(let e):
+                        ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
+                    case .crypto(_):
+                        EmptyView() // or CryptoPageView
+                    }
                 }
             }
-        }
-        .onChange(of: pageStore.pages.count) { _, newCount in
-            guard newCount > 0 else {
-                pageIndex = 0
-                return
+            .toolbar(path.isEmpty ? .visible : .hidden, for: .tabBar)
+            .onChange(of: pageStore.pages.count) { _, newCount in
+                guard newCount > 0 else {
+                    pageIndex = 0
+                    return
+                }
+                pageIndex = min(pageIndex, newCount - 1)
             }
-            pageIndex = min(pageIndex, newCount - 1)
-        }
-        .sheet(isPresented: $sheetPresented) {
-            PageCreation(sheetPresented: $sheetPresented, path: $path)
-                .presentationDetents([.large, .large])
+            .sheet(isPresented: $sheetPresented) {
+                PageCreation(sheetPresented: $sheetPresented, path: $path)
+                    .presentationDetents([.large, .large])
+            }
+//            VStack {
+//                Capsule()
+//                    .frame(width: 300, height: 200)
+//            }
         }
     }
     
     var emptyPageDisplay: some View {
-        Text("PLACEHOLDER EMPTY PAGES")
+        Text("Your Studio.")
+            .font(Font.theme.display(50))
     }
     
-    var addPageButton: some View {
-        Button {
-            sheetPresented = true
-        } label: {
-            HStack {
-                Text("ADD PAGE")
-                    .fontWeight(.semibold)
-                Image(systemName: "plus.circle.fill")
-            }
-            .foregroundColor(.white)
-            .frame(width: UIScreen.main.bounds.width - 32, height: 48)
-            .background(.blue)
+    private var addPageButton: some View {
+        Button { sheetPresented = true } label: {
+            Label("Add Portfolio", systemImage: "plus")
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Color.theme.onAccent)
+                .frame(maxWidth: .infinity)
+                .frame(height: 52)
+                .background(Color.theme.accent, in: Capsule())
         }
     }
 }

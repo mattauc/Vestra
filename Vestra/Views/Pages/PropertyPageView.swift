@@ -18,27 +18,60 @@ struct PropertyPageView: View {
     @State var pageTitle: String = ""
     @State var isEditingTitle = false
     
+    private let cardHeight: CGFloat = 250
+    private let cardWidth: CGFloat = 400
+    
     var body: some View {
         ZStack {
-            Color(.mint)
-            VStack {
-                titleDisplay
+            Color.theme.background
+            
+            ScrollView(.vertical) {
+                VStack {
+                    GroupBox(label: titleDisplay
+                        .fixedSize(horizontal: false, vertical: true)) {
+                        VStack() {
+                            Text("1BR . Purchased Dec 2025")
+                                .font(Font.theme.ui(15))
+                                .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
+                                .frame(height: 80)
+                                .padding(.top)
                 
-                
-                Text("PROPERTY" + " \(pageId)")
+                        }
+                        
+                        
+                    }
                     .padding()
-                
-                
-                closeButton
+                    .groupBoxStyle(.custom(for: .property(PropertyPage())))
+                    .frame(width: cardWidth, height: cardHeight)
+
+                    closeButton
+                }
             }
+            .padding(.top, 120)
         }
+        .toolbar {
+              ToolbarItem(placement: .principal) {
+                  HStack(spacing: 6) {
+                      Image(systemName: "house.fill")
+                      Text("Property")
+                          .font(Font.theme.display(15))
+                  }
+                  .padding(.horizontal, 12)
+                  .padding(.vertical, 6)
+                  .background(Color.theme.property, in: Capsule())
+                  .foregroundStyle(Color.theme.onAsset)
+              }
+          }
+
         .ignoresSafeArea()
-        .toolbar(.hidden, for: .tabBar)
-        .onDisappear() {
-            if pageStore.pages.contains(where: { $0.id == pageId }) {
-                pageStore.updatePage(.property(manager.currentPage))
-            }
-        }
+        // CONSIDER DOING THIS PRIOR TO DISAPPEAR TO MAKE UPDATING LOOK MORE SEAMLESS
+//        .onDisappear() {
+//            if pageStore.pages.contains(where: { $0.id == pageId }) {
+//                pageStore.updatePage(.property(manager.currentPage))
+//            }
+//        }
     }
     
     var titleDisplay: some View {
@@ -52,21 +85,26 @@ struct PropertyPageView: View {
                     }
                     .onSubmit {
                         isEditingTitle = false
+                        pageStore.updatePage(.property(manager.currentPage))
                     }
             } else {
                 Text(manager.title == "" ? "New Property" : manager.title)
                     .font(.largeTitle.weight(.bold))
+                    .font(.largeTitle.weight(.bold))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.6)
             }
-            
+            Spacer()
             Button {
                 isEditingTitle = true
             } label: {
                 Image(systemName: "pencil")
                     .font(.title2)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color.theme.onAccent)
             }
         }
-        .padding()
+        .frame(height: 60)
+
     }
     
     var closeButton: some View {

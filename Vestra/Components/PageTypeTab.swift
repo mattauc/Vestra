@@ -26,25 +26,61 @@ struct PageTypeTab: View {
                 sheetPresented = false
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color(.secondarySystemBackground))
-                        .frame(height: 160)
-                        .shadow(radius: 4, x: 1, y: 5)
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                          .fill(Color.theme.surface)
+                          .frame(height: 120)
+                          .overlay(alignment: .leading) {
+                                Rectangle()
+                                    .fill(accentColor)
+                                    .frame(width: 13)
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                          .shadow(radius: 4, x: 1, y: 5)
                     HStack {
-                        portfolioImage
-                            .font(.largeTitle)
-                            .foregroundStyle(availableYet ? Color.blue : Color.red)
-                            .padding(.horizontal)
-                        Text(portfolioType.kindLabel)
-                            .font(.largeTitle)
+                        ZStack {
+                            Circle()
+                                .fill(accentColor)
+                                .frame(height: 80)
+                            portfolioImage
+                                .font(.system(size: 35))
+                                .foregroundStyle(Color.black)
+                        }
+                        .padding(.leading, 25)
+                        
+                        
+                        
+                        VStack(alignment: .leading) {
+                            Text(portfolioType.kindLabel)
+                                .font(Font.theme.display(30, weight: .black))
+                                .foregroundStyle(Color.theme.primaryText)
+                            Text(portfolioType.kindDescription)
+                                  .font(Font.theme.ui(18))
+                                  .foregroundStyle(Color.theme.primaryText)
+                                  .lineLimit(2)
+                                  .minimumScaleFactor(0.6)
+                                  .multilineTextAlignment(.leading)
+                                  .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(.leading, 10)
+                        
+                            
                         Spacer()
                         Image(systemName: "chevron.right")
-                            .font(.largeTitle)
-                            .padding(.horizontal)
+                            .font(.title)
+                            .padding(.trailing)
+                            .foregroundStyle(Color.black)
                     }
                 }
             }
             .disabled(!availableYet)
+        }
+    }
+    
+    private var accentColor: Color {
+        switch portfolioType {
+        case .property: return Color.theme.property
+        case .etf:      return Color.theme.etf
+        case .crypto:   return Color.theme.crypto
         }
     }
 }
@@ -54,7 +90,7 @@ struct PageTypeTab: View {
     @Previewable @State var sheetPresented = true
     let auth = AuthManager()
     PageTypeTab(
-        portfolioImage: Image(systemName: "plus.circle.fill"),
+        portfolioImage: Image(systemName: "house"),
         portfolioType: .property(PropertyPage()),
         availableYet: true,
         sheetPresented: $sheetPresented,

@@ -54,10 +54,10 @@ struct DashboardView: View {
             HStack(alignment: .center, spacing: 16) {
                 ZStack {
                     Circle()
-                        .fill(.blue.opacity(0.14))
+                        .fill(Color.theme.accent.opacity(0.14))
                     Text(userManager.profile?.initials ?? "—")
                         .font(.title2.weight(.semibold))
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color.theme.accent)
                 }
                 .frame(width: 64, height: 64)
 
@@ -91,7 +91,8 @@ struct DashboardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(.secondarySystemGroupedBackground))
+                .fill(Color.theme.surface)
+                .shadow(color: Color.theme.primaryText.opacity(0.06), radius: 8, x: 0, y: 2)
         }
         .padding(.horizontal)
     }
@@ -127,9 +128,9 @@ struct DashboardView: View {
                     .fontWeight(.semibold)
                 Image(systemName: "arrow.left")
             }
-            .foregroundColor(.white)
+            .foregroundStyle(Color.theme.onAsset)
             .frame(width: UIScreen.main.bounds.width - 32, height: 48)
-            .background(.red)
+            .background(Color.theme.negative)
         }
     }
 
