@@ -23,20 +23,18 @@ struct PageStoreView: View {
     var body: some View {
         VStack {
             NavigationStack(path: $path) {
+                topBar
                 VStack {
                     if pageStore.pages.isEmpty {
-                        emptyPageDisplay
-                            .padding(.top, 300)
+
                     } else {
                             ZStack {
                                 ForEach(pageStore.pages) { page in
                                     PageView(page: page, pageIndex: $pageIndex, path: $path)
                                 }
                             }
-                            .padding(.vertical, 30)
                     }
-                    addPageButton
-                        .padding()
+                    Spacer()
                 }
                 .navigationDestination(for: PortfolioPage.self) { page in
                     switch page {
@@ -66,10 +64,6 @@ struct PageStoreView: View {
                 PageCreation(sheetPresented: $sheetPresented, path: $path)
                     .presentationDetents([.large, .large])
             }
-//            VStack {
-//                Capsule()
-//                    .frame(width: 300, height: 200)
-//            }
         }
     }
     
@@ -78,16 +72,52 @@ struct PageStoreView: View {
             .font(Font.theme.display(50))
     }
     
-    private var addPageButton: some View {
+    var addPageButton: some View {
         Button { sheetPresented = true } label: {
-            Label("Add Portfolio", systemImage: "plus")
-                .font(.body.weight(.semibold))
+            Image(systemName: "plus")
+                .font(.system(size: 30, weight: .semibold))
                 .foregroundStyle(Color.theme.onAccent)
-                .frame(maxWidth: .infinity)
-                .frame(height: 52)
-                .background(Color.theme.accent, in: Capsule())
+                .frame(width: 52, height: 52)
+                .background(Color.theme.accent, in: Circle())
         }
     }
+    
+    var topBar: some View {
+        HStack() {
+            VStack(alignment: .leading) {
+                Text(String(pageStore.pages.count) + " PAGES")
+                    .font(Font.theme.ui(15))
+                    .foregroundStyle(Color.black.opacity(0.7))
+                Text("Your Studio.")
+                    .font(Font.theme.display(40))
+            }
+            Spacer()
+            addPageButton
+                .padding()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+    }
+    
+//    var filterButtons: some View {
+//        HStack {
+//            Button {
+//                
+//            }
+//            Button {
+//                
+//            }
+//            Button {
+//                
+//            }
+//            Button {
+//                
+//            }
+//            Button {
+//                
+//            }
+//        }
+//    }
 }
 
 #Preview {

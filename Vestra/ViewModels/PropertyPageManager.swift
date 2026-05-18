@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 @MainActor
 final class PropertyPageManager: ObservableObject {
@@ -58,10 +59,57 @@ final class PropertyPageManager: ObservableObject {
         }
     }
     
+    func sendPropertyAddress(address: String) async {
+        let geocoder = CLGeocoder()
     
-    
-    
+        guard let placemark = try? await geocoder.geocodeAddressString(address).first else {
+            print("Geocoding failed")
+            return
+        }
+        
+        // Extract structured components from placemark
+        let streetNumber = placemark.subThoroughfare ?? ""
+        let streetName   = placemark.thoroughfare ?? ""
+        let suburb       = placemark.locality ?? ""
+        let state        = placemark.administrativeArea ?? ""
+        let postcode     = placemark.postalCode ?? ""
+        
+        print(streetNumber + " " + streetName + " " + suburb + " " + state + " " + postcode)
+        
+        
+        let name = placemark.name ?? ""
+        print(name)
+        var unit = ""
+        if name.contains("/") {
+          unit = String(name.split(separator: "/").first ?? "")+"-"
+        }
 
+
+        try? await fetchPropertyData(
+            streetNumber: unit+streetNumber,
+            streetName: streetName,
+            suburb: suburb,
+            state: state,
+            postcode: postcode
+        )
+    }
     
-    
+    func fetchPropertyData(streetNumber: String, streetName: String, suburb: String, state: String, postcode: String) async throws {
+        let data: PropertyData = try await NetworkManager.shared.request(
+            PropertyEndpoint.getProperty(
+            streetNumber: streetNumber,
+            streetName: streetName,
+            suburb: suburb,
+            state: state,
+            postcode: postcode
+            )
+        )
+        
+        print(data)
+        currentPage.coverImage = data.coverImage
+        currentPage.propertyAddress = data.address ?? currentPage.propertyAddress
+
+        // Persist to Firestore
+        pageStore.updatePage(.property(currentPage))
+    }
 }

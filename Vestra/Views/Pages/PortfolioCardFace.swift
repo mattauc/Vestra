@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PortfolioCardFace: View {
     let page: PortfolioPage
+    
+    let imageFrameSize: CGFloat = 200
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -55,16 +58,28 @@ struct PortfolioCardFace: View {
     @ViewBuilder
     var cardBody: some View {
         switch page {
-        case .property:
+        case .property(let p):
             VStack() {
                 Text("1BR . Purchased Dec 2025")
                     .font(Font.theme.ui(15))
                     .foregroundStyle(Color.theme.onAsset.opacity(0.7))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
-                    .frame(height: 100)
                     .padding()
+                
+                    if let imageUrl = p.coverImage,
+                         let url = URL(string: imageUrl) {
+                            KFImage(url)
+                              .resizable()
+                              .scaledToFill()
+                              .clipped()
+                              .frame(height: imageFrameSize)
+                              .clipShape(RoundedRectangle(cornerRadius: 8))
+                              .padding()
+                      } else {
+                          StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
+                              .frame(height: imageFrameSize)
+                              .padding()
+                      }
             }
         case .etf:
             EmptyView()

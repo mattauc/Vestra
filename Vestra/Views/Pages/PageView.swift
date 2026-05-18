@@ -63,7 +63,7 @@ private extension PageView {
     }
     
     var pageHeight: CGFloat {
-        UIScreen.main.bounds.height / 1.45
+        UIScreen.main.bounds.height / 2
     }
     
 }

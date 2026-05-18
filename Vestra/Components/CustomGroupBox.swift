@@ -15,6 +15,7 @@ struct CustomGroupBox: GroupBoxStyle {
                 .foregroundStyle(Color.theme.onAsset)
             configuration.content
         }
+        .frame(maxWidth: .infinity)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 15)

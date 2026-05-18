@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PropertyPageView: View {
     
@@ -18,8 +19,7 @@ struct PropertyPageView: View {
     @State var pageTitle: String = ""
     @State var isEditingTitle = false
     
-    private let cardHeight: CGFloat = 250
-    private let cardWidth: CGFloat = 400
+    private let cardHeight: CGFloat = 320
     
     var body: some View {
         ZStack {
@@ -34,9 +34,19 @@ struct PropertyPageView: View {
                                 .font(Font.theme.ui(15))
                                 .foregroundStyle(Color.theme.onAsset.opacity(0.7))
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
-                                .frame(height: 80)
-                                .padding(.top)
+                            if let imageUrl = manager.currentPage.coverImage,
+                                 let url = URL(string: imageUrl) {
+                                    KFImage(url)
+                                      .resizable()
+                                      .scaledToFill()
+                                      .frame(maxWidth: .infinity)
+                                      .frame(height: 160)
+                                      .clipped()
+                                      .clipShape(RoundedRectangle(cornerRadius: 8))
+                              } else {
+                                  StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
+                                      .frame(height: 80)
+                              }
                 
                         }
                         
@@ -44,7 +54,8 @@ struct PropertyPageView: View {
                     }
                     .padding()
                     .groupBoxStyle(.custom(for: .property(PropertyPage())))
-                    .frame(width: cardWidth, height: cardHeight)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: cardHeight)
 
                     closeButton
                 }
@@ -86,6 +97,10 @@ struct PropertyPageView: View {
                     .onSubmit {
                         isEditingTitle = false
                         pageStore.updatePage(.property(manager.currentPage))
+                        Task {
+                            await manager.sendPropertyAddress(address: manager.title)
+                            
+                        }
                     }
             } else {
                 Text(manager.title == "" ? "New Property" : manager.title)
@@ -104,7 +119,6 @@ struct PropertyPageView: View {
             }
         }
         .frame(height: 60)
-
     }
     
     var closeButton: some View {
