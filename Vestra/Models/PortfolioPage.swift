@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum PageType {
     case property
@@ -60,6 +61,14 @@ extension PortfolioPage {
         case .crypto:   return "Follow your digital assets"
         }
     }
+    
+    var kindImage: Image {
+        switch self {
+        case .property: return Image(systemName: "house")
+        case .etf:      return Image(systemName: "chart.bar.fill")
+        case .crypto:   return Image(systemName: "bitcoinsign.circle.fill")
+        }
+    }
 }
 
 protocol PagePayload {
@@ -68,4 +77,9 @@ protocol PagePayload {
     var activeInvestment: Bool { get }
 }
 
+extension PortfolioPage {
+      var isProperty: Bool { if case .property = self { return true }; return false }
+      var isETF: Bool { if case .etf = self { return true }; return false }
+      var isCrypto: Bool { if case .crypto = self { return true }; return false }
+  }
 

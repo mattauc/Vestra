@@ -14,6 +14,7 @@
 		671D95332F73954E00980992 /* ETFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95322F73954E00980992 /* ETFPage.swift */; };
 		671D95352F73955C00980992 /* CryptoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95342F73955C00980992 /* CryptoPage.swift */; };
 		676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603922F73B5160043C8B5 /* ETFPageView.swift */; };
+		1B185FB75C24434FBD1C7893 /* CryptoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C558C420D46C9A1E506CC /* CryptoPageView.swift */; };
 		676603972F74FA530043C8B5 /* PropertyPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603962F74FA530043C8B5 /* PropertyPageManager.swift */; };
 		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
 		67725F6C2EB86D0E0049445D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F6B2EB86D0E0049445D /* FirebaseFirestore */; };
@@ -45,6 +46,8 @@
 		67D88C2E2FB9486500304CA2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C2D2FB9486500304CA2 /* NetworkManager.swift */; };
 		67D88C312FBADE4400304CA2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 67D88C302FBADE4400304CA2 /* Kingfisher */; };
 		67D88C332FBAEE8B00304CA2 /* PortfolioTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C322FBAEE8B00304CA2 /* PortfolioTabButton.swift */; };
+		67D88C352FBC0DE700304CA2 /* PageColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C342FBC0DE700304CA2 /* PageColumns.swift */; };
+		67D88C372FBD839100304CA2 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C362FBD839100304CA2 /* CustomTabBar.swift */; };
 		736A7B221FAC4A0597471A6E /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927CCDA60B346E79A3DF657 /* Color+Theme.swift */; };
 		88291DFA5FED492C8BAE5119 /* CustomGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BCD9C98D541E580E84A18 /* CustomGroupBox.swift */; };
 		AD488169B51741C791DEC5BF /* TitanOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12D058B6EFFC4123ACB93AA6 /* TitanOne-Regular.ttf */; };
@@ -77,6 +80,7 @@
 		671D95302F738EFA00980992 /* PageTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTypeTab.swift; sourceTree = "<group>"; };
 		671D95322F73954E00980992 /* ETFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPage.swift; sourceTree = "<group>"; };
 		671D95342F73955C00980992 /* CryptoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPage.swift; sourceTree = "<group>"; };
+		C85C558C420D46C9A1E506CC /* CryptoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPageView.swift; sourceTree = "<group>"; };
 		676603922F73B5160043C8B5 /* ETFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageView.swift; sourceTree = "<group>"; };
 		676603962F74FA530043C8B5 /* PropertyPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageManager.swift; sourceTree = "<group>"; };
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		67D88C2B2FB83FC900304CA2 /* ABeeZee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABeeZee-Regular.ttf"; sourceTree = "<group>"; };
 		67D88C2D2FB9486500304CA2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		67D88C322FBAEE8B00304CA2 /* PortfolioTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTabButton.swift; sourceTree = "<group>"; };
+		67D88C342FBC0DE700304CA2 /* PageColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageColumns.swift; sourceTree = "<group>"; };
+		67D88C362FBD839100304CA2 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		724967780AF54519BBD2A9C9 /* PortfolioCardFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCardFace.swift; sourceTree = "<group>"; };
 		8398551B9FED4D6290B977D1 /* Font+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Theme.swift"; sourceTree = "<group>"; };
 		9927CCDA60B346E79A3DF657 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
@@ -150,9 +156,11 @@
 				67725F842F70F8FF0049445D /* PageView.swift */,
 				724967780AF54519BBD2A9C9 /* PortfolioCardFace.swift */,
 				676603922F73B5160043C8B5 /* ETFPageView.swift */,
+				C85C558C420D46C9A1E506CC /* CryptoPageView.swift */,
 				67725F792F6FB9E80049445D /* PropertyPageView.swift */,
 				67725F7B2F6FE1500049445D /* PageStoreView.swift */,
 				671D952E2F736EB900980992 /* PageCreation.swift */,
+				67D88C342FBC0DE700304CA2 /* PageColumns.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 				C615BAA3FBCC4C9CA64D1C3D /* StriatedPlaceholder.swift */,
 				089BCD9C98D541E580E84A18 /* CustomGroupBox.swift */,
 				67D88C322FBAEE8B00304CA2 /* PortfolioTabButton.swift */,
+				67D88C362FBD839100304CA2 /* CustomTabBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -452,12 +461,14 @@
 				67AFEC262EB74E6E003BBF06 /* UserManager.swift in Sources */,
 				671D95352F73955C00980992 /* CryptoPage.swift in Sources */,
 				67AFEC2E2EB74E73003BBF06 /* RegistrationView.swift in Sources */,
+				67D88C352FBC0DE700304CA2 /* PageColumns.swift in Sources */,
 				67AFEC162EB74E59003BBF06 /* VestraApp.swift in Sources */,
 				67725F822F70B0590049445D /* PortfolioPage.swift in Sources */,
 				67D88C2E2FB9486500304CA2 /* NetworkManager.swift in Sources */,
 				67AFEC202EB74E64003BBF06 /* UserProfile.swift in Sources */,
 				671D952F2F736EB900980992 /* PageCreation.swift in Sources */,
 				676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */,
+				1B185FB75C24434FBD1C7893 /* CryptoPageView.swift in Sources */,
 				671D95332F73954E00980992 /* ETFPage.swift in Sources */,
 				67D88C332FBAEE8B00304CA2 /* PortfolioTabButton.swift in Sources */,
 				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
@@ -466,6 +477,7 @@
 				67AFEC192EB74E5E003BBF06 /* InputView.swift in Sources */,
 				67725F852F70F8FF0049445D /* PageView.swift in Sources */,
 				736A7B221FAC4A0597471A6E /* Color+Theme.swift in Sources */,
+				67D88C372FBD839100304CA2 /* CustomTabBar.swift in Sources */,
 				1BEC91787A244426B3C9C8C5 /* Font+Theme.swift in Sources */,
 				2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */,
 				D3F48960E81D4FB8ABD0ED22 /* StriatedPlaceholder.swift in Sources */,

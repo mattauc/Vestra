@@ -46,6 +46,7 @@ struct PageCreation: View {
                 PageTypeTab(
                     portfolioImage: Image(systemName: "bitcoinsign.circle.fill"),
                     portfolioType: .crypto(CryptoPage()),
+                    availableYet: true,
                     sheetPresented: $sheetPresented,
                     path: $path
                 )

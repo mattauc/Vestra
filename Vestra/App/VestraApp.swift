@@ -28,6 +28,7 @@ struct VestraApp: App {
     
     init() {
         FirebaseApp.configure()
+//        UITabBar.appearance().isHidden = true
     }
     
     var body: some Scene {

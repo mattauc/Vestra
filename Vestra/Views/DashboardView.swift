@@ -34,6 +34,12 @@ struct DashboardView: View {
                         }
                         .tag(2)
                 }
+//                .overlay(alignment: .bottom) {
+//                      CustomTabBar(selectedTab: $selectedTab)
+//                          .padding(.horizontal, 40)
+//                          
+//                  }
+
             } else {
                 loadingProfileView
             }
