@@ -64,9 +64,17 @@ extension PortfolioPage {
     
     var kindImage: Image {
         switch self {
-        case .property: return Image(systemName: "house")
+        case .property: return Image(systemName: "house.fill")
         case .etf:      return Image(systemName: "chart.bar.fill")
         case .crypto:   return Image(systemName: "bitcoinsign.circle.fill")
+        }
+    }
+    
+    var kindColor: Color {
+        switch self {
+        case .property: return Color.theme.property
+        case .etf:      return Color.theme.etf
+        case .crypto:   return Color.theme.crypto
         }
     }
 }

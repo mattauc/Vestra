@@ -18,49 +18,45 @@ struct PropertyPageView: View {
     @Binding var path: NavigationPath
     @State var pageTitle: String = ""
     @State var isEditingTitle = false
+    @State private var showingLoanEditor = false
     
     private let cardHeight: CGFloat = 320
     
     var body: some View {
         ZStack {
-            Color.theme.background
-            
-            ScrollView(.vertical) {
-                VStack {
-                    GroupBox(label: titleDisplay
-                        .fixedSize(horizontal: false, vertical: true)) {
-                        VStack() {
-                            Text("1BR . Purchased Dec 2025")
-                                .font(Font.theme.ui(15))
-                                .foregroundStyle(Color.theme.onAsset.opacity(0.7))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            if let imageUrl = manager.currentPage.coverImage,
-                                 let url = URL(string: imageUrl) {
-                                    KFImage(url)
-                                      .resizable()
-                                      .scaledToFill()
-                                      .frame(maxWidth: .infinity)
-                                      .frame(height: 160)
-                                      .clipped()
-                                      .clipShape(RoundedRectangle(cornerRadius: 8))
-                              } else {
-                                  StriatedPlaceholder(color: Color.theme.property, label: "PROPERTY / PHOTO")
-                                      .frame(height: 80)
-                              }
-                
+            Color.theme.depth
+            VStack {
+                GroupBox(label: titleDisplay
+                    .fixedSize(horizontal: false, vertical: true)) {
+                    VStack() {
+                        Text(manager.propertyDetails)
+                            .font(Font.theme.ui(15))
+                            .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 20)
+                        
+                        estimateDisplay
+                        HStack {
+                            StatPill(label: "Purchase", value: manager.lastSoldPrice.formattedAUD(), isCard: true)
+                            Spacer()
+                            StatPill(label: "Gain", value: manager.propertyGain.formattedAUD(), isCard: true)
+                            Spacer()
+                            StatPill(label: "Held", value: manager.yearsHeld, isCard: true)
                         }
-                        
-                        
+            
                     }
-                    .padding()
-                    .groupBoxStyle(.custom(for: .property(PropertyPage())))
-                    .frame(maxWidth: .infinity)
-                    .frame(height: cardHeight)
-
-                    closeButton
                 }
+                    .padding([.top, .horizontal])
+                    .padding(.bottom, 5)
+                .groupBoxStyle(.custom(for: .property(PropertyPage())))
+                financialData
+                    .padding([.horizontal])
+                    .padding(.bottom, 5)
+                loanDisplay
+                Spacer()
             }
-            .padding(.top, 120)
+            .padding(.top, 110)
+            
         }
         .toolbar {
               ToolbarItem(placement: .principal) {
@@ -73,16 +69,14 @@ struct PropertyPageView: View {
                   .padding(.vertical, 6)
                   .background(Color.theme.property, in: Capsule())
                   .foregroundStyle(Color.theme.onAsset)
+
               }
+            ToolbarItem(placement: .topBarTrailing) {
+                closeButton
+                }
           }
 
         .ignoresSafeArea()
-        // CONSIDER DOING THIS PRIOR TO DISAPPEAR TO MAKE UPDATING LOOK MORE SEAMLESS
-//        .onDisappear() {
-//            if pageStore.pages.contains(where: { $0.id == pageId }) {
-//                pageStore.updatePage(.property(manager.currentPage))
-//            }
-//        }
     }
     
     var titleDisplay: some View {
@@ -96,10 +90,8 @@ struct PropertyPageView: View {
                     }
                     .onSubmit {
                         isEditingTitle = false
-                        pageStore.updatePage(.property(manager.currentPage))
                         Task {
                             await manager.sendPropertyAddress(address: manager.title)
-                            
                         }
                     }
             } else {
@@ -118,7 +110,7 @@ struct PropertyPageView: View {
                     .foregroundStyle(Color.theme.onAccent)
             }
         }
-        .frame(height: 60)
+        .frame(height: 50)
     }
     
     var closeButton: some View {
@@ -133,13 +125,189 @@ struct PropertyPageView: View {
                     pageIndex = min(pageIndex, pageStore.pages.count - 1)
                 }
         } label: {
-            Image(systemName: "xmark.circle.fill")
+            Image(systemName: "xmark")
                 .font(.title3)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.primary)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Close")
     }
+    
+    var estimateDisplay: some View {
+        let low = manager.estimateLowPirce
+        let high = manager.estimateHighPrice
+        let mid = manager.estimateMidPrice
+        let confidence = manager.estimateConfidence
+        let ratio = high > low ? CGFloat((mid - low) / (high - low)) : 0.5
+
+        return VStack(alignment: .leading, spacing: 4) {
+            Text("ESTIMATE")
+                .font(Font.theme.mono(15, weight: .heavy))
+                .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                .tracking(1.2)
+
+            Text(mid.formattedAUD())
+                .font(.largeTitle.bold())
+                .foregroundStyle(Color.white)
+                .padding(.bottom, 8)
+
+            // Horizontal range line with yellow circle at the mid position
+            GeometryReader { geo in
+                let lineWidth = geo.size.width
+                let circleX = max(0, min(ratio * lineWidth - 7, lineWidth - 14))
+                ZStack(alignment: .leading) {
+                    Capsule()
+                        .fill(Color.white.opacity(0.25))
+                        .frame(height: 3)
+                        .frame(maxWidth: .infinity)
+                        .offset(y: 5)
+                    Circle()
+                        .fill(Color.yellow)
+                        .frame(width: 14, height: 14)
+                        .offset(x: circleX)
+                        .shadow(color: .yellow.opacity(0.9), radius: 7, x: 0, y: 0)
+                }
+            }
+            .frame(height: 14)
+            HStack {
+                VStack {
+                    Text("LOW")
+                        .font(Font.theme.mono(12, weight: .heavy))
+                        .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                        .tracking(1.2)
+                    Text(low.formattedAUD())
+                        .font(Font.theme.mono(20))
+                        .foregroundStyle(Color.white)
+                }
+                Spacer()
+                VStack {
+                    Text("CONFIDENCE")
+                        .font(Font.theme.mono(12, weight: .heavy))
+                        .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                        .tracking(1.2)
+                    Text(confidence)
+                        .font(Font.theme.mono(20))
+                        .foregroundStyle(Color.white)
+                        .tracking(1.2)
+                }
+                Spacer()
+                VStack {
+                    Text("HIGH")
+                        .font(Font.theme.mono(12, weight: .heavy))
+                        .foregroundStyle(Color.theme.onAsset.opacity(0.7))
+                        .tracking(1.2)
+                    Text(high.formattedAUD())
+                        .font(Font.theme.mono(20))
+                        .foregroundStyle(Color.white)
+                }
+            }
+        }
+        .padding(.bottom, 8)
+    }
+    
+    var financialData: some View {
+        HStack {
+            StatPill(label: "Equity", value: manager.equity.formattedAUD(), isCard: false)
+            Spacer()
+            StatPill(label: "Loan", value: manager.currentPage.loanBalance.formattedAUD(), isCard: false) { newValue in
+                manager.setLoanBalance(newValue)
+            }
+            Spacer()
+            StatPill(label: "Rent", value: manager.rentalEstimate.formattedAUD(), isCard: false) { newValue in
+                if let amount = Double(newValue.filter { $0.isNumber || $0 == "." }) {
+                    manager.setRent(amount)
+                }
+            }
+            Spacer()
+            StatPill(label: "Yield", value: String(format: "%.1f%%", manager.propertyYield), isCard: false) { newValue in
+                if let amount = Double(newValue.filter { $0.isNumber || $0 == "." }) {
+                    manager.setYield(amount)
+                }
+            }
+        }
+    }
+    
+    var loanDisplay: some View {
+        let purchase = manager.lastSoldPrice
+        let loan = manager.currentPage.loanBalance
+        let equityRatio: CGFloat = purchase > 0
+            ? CGFloat(max(0, min(1, 1 - loan / purchase)))
+            : 1.0
+        let equityPercent = Int(equityRatio * 100)
+        let amountPaid = max(0, purchase - loan)
+
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Loan")
+                    .font(Font.theme.display(20).bold())
+                    .foregroundStyle(Color.black)
+                Spacer()
+                HStack(spacing: 4) {
+                    Text(String(format: "%.2f%%", manager.interestRate))
+                        .font(Font.theme.mono(13, weight: .heavy))
+                        .foregroundStyle(Color.black.opacity(0.5))
+                    Text("·")
+                        .foregroundStyle(Color.black.opacity(0.3))
+                    Text("\(manager.monthlyRepayment.formattedAUD())/mo")
+                        .font(Font.theme.mono(13, weight: .heavy))
+                        .foregroundStyle(Color.black.opacity(0.5))
+                }
+                Button {
+                    showingLoanEditor = true
+                } label: {
+                    Image(systemName: "pencil")
+                        .font(.body)
+                        .foregroundStyle(Color.black.opacity(0.4))
+                        .padding(.leading, 6)
+                }
+                .popover(isPresented: $showingLoanEditor) {
+                    LoanEditorSheet(manager: manager)
+                        .presentationDetents([.height(280)])
+                }
+            }
+
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(Color.theme.depth)
+                        .frame(height: 12)
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(PortfolioPage.property(manager.currentPage).kindColor)
+                        .frame(width: geo.size.width * equityRatio, height: 12)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.7), value: equityRatio)
+                }
+            }
+            .frame(height: 12)
+
+            HStack {
+                Text("\(amountPaid.formattedAUD()) Paid · \(equityPercent)%")
+                    .font(Font.theme.mono(13, weight: .heavy))
+                    .foregroundStyle(Color.black.opacity(0.5))
+                    .tracking(1.2)
+                Spacer()
+                Text("\(loan.formattedAUD()) left")
+                    .font(Font.theme.mono(13, weight: .heavy))
+                    .foregroundStyle(Color.black.opacity(0.5))
+                    .tracking(1.2)
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 1, y: 1)
+        )
+        .padding([.horizontal])
+    }
+//    
+//    var expenses: some View {
+//        
+//    }
+//    
+//    var activityDisplay: some View {
+//
+//    }
+//    
 }
 
 #Preview {

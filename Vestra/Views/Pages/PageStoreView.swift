@@ -21,6 +21,7 @@ struct PageStoreView: View {
     @State private var sheetPresented = false
     @State var path = NavigationPath()
     @State private var cardOrder: [UUID] = []
+    @State private var cardScrollPosition: UUID?
     
 
     private let cardSpacerHeight: CGFloat = UIScreen.main.bounds.height / 2
@@ -34,52 +35,72 @@ struct PageStoreView: View {
                     if pageStore.pages.isEmpty {
                         Spacer()
                     } else {
-                        
-                        ZStack(alignment: .top) {
-                            
-                            // Cards — on top at rest, behind when scrolling
-                            ZStack {
-                                ForEach(orderedPages) { page in
-                                    PageView(page: page, pageIndex: $pageIndex, path: $path, onSwiped: {
-                                        sendToBottom(page)
-                                    })
-                                    .padding([.bottom, .horizontal])
+                        // Cards — on top at rest, behind when scrolling
+                        VStack(spacing: 8) {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 0) {
+                                    ForEach(orderedPages) { page in
+                                        PageView(page: page, pageIndex: $pageIndex, path: $path, onSwiped: {
+                                            sendToBottom(page)
+                                        })
+                                        .containerRelativeFrame(.horizontal, count: 1, spacing: 0)
+                                    }
+                                }
+                                .scrollTargetLayout()
+                                .onAppear {
+                                    selectedTab = 0
+                                    cardOrder = filteredPages.map { $0.id }
                                 }
                             }
-                            
-                            .opacity(cardOpacity)
-                            .allowsHitTesting(scrollOffset >= -10)
-                            .onAppear {
-                                selectedTab = 0
-                                cardOrder = filteredPages.map { $0.id }
+                            .scrollPosition(id: $cardScrollPosition)
+                            .scrollTargetBehavior(.viewAligned)
+
+                            // Dot indicators
+                            HStack(spacing: 6) {
+                                ForEach(orderedPages) { page in
+                                    Circle()
+                                        .fill(cardScrollPosition == page.id ? Color.theme.primaryText : Color.theme.tertiaryText)
+                                        .frame(width: 7, height: 7)
+                                }
                             }
-                            .zIndex(scrollOffset < -10 ? 0 : 1)
-                            
-                            // ScrollView — behind at rest, on top when scrolling
-                            ScrollView(.vertical, showsIndicators: false) {
-                                LazyVStack(spacing: 0) {
-                                    Color.clear
-                                        .frame(height: cardSpacerHeight)
-                                        .allowsHitTesting(false)
-                                        .background(GeometryReader { proxy -> Color in
-                                            let minY = proxy.frame(in: .named("scroll")).minY
-                                            DispatchQueue.main.async { self.scrollOffset = minY }
-                                            return Color.clear
-                                        })
-                                    ForEach(orderedPages) { page in
-                                        PageColumns(page: page)
-                                            .padding(.top, 10)
+                        }
+                        
+                        // ScrollView — grouped by asset type
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
+                                ForEach(["Property", "ETF", "Crypto"], id: \.self) { section in
+                                    if let pages = groupedPages[section], !pages.isEmpty {
+                                        
+                                        Section {
+                                            ForEach(pages) { page in
+                                                PageColumns(page: page)
+                                                    .padding(.top, 10)
+                                            }
+                                        } header: {
+                                            HStack {
+                                                groupedPages[section]?.first?.kindImage
+                                                      .font(.title.bold())
+                                                      .foregroundStyle(Color.white)
+                                                      .frame(width: 40, height: 40)
+                                                      .padding(5)
+                                                  Text(section)
+                                                      .font(.title2.bold())
+                                                      .foregroundStyle(Color.white)
+                                                      .lineLimit(1)
+                                                      .frame(maxWidth: .infinity, alignment: .leading)
+                                                  Spacer()
+                                              }
+                                            .background(groupedPages[section]?.first?.kindColor)
+                                        }
                                     }
                                 }
                             }
-                            .scrollBounceBehavior(.basedOnSize)
-                            .background(Color.clear)
-                            .scrollContentBackground(.hidden)
-                            .coordinateSpace(name: "scroll")
-                            .zIndex(scrollOffset < -10 ? 1 : 0)
                         }
-                        .frame(maxHeight: .infinity)
-                            
+                        .scrollBounceBehavior(.basedOnSize)
+                        .background(Color.clear)
+                        .scrollContentBackground(.hidden)
+
+                        
                     }
                 }
                 .navigationDestination(for: PortfolioPage.self) { page in
@@ -112,17 +133,15 @@ struct PageStoreView: View {
             }
         }
     }
-    
-    var cardOpacity: Double {
-        guard scrollOffset < 0 else { return 1 }
-        let fadeDistance: CGFloat = 40
-        return max(0, 1 + scrollOffset / fadeDistance)
-    }
       
     var orderedPages: [PortfolioPage] {
         cardOrder.compactMap { id in
             filteredPages.first(where: { $0.id == id })
         }
+    }
+
+    var groupedPages: [String: [PortfolioPage]] {
+        Dictionary(grouping: orderedPages, by: \.kindLabel)
     }
     
     func sendToBottom(_ page: PortfolioPage) {
@@ -175,7 +194,8 @@ struct PageStoreView: View {
                 .padding()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+        .padding([.horizontal, .top])
+        .padding(.bottom, 5)
     }
     
     var filterButtons: some View {
@@ -206,6 +226,7 @@ struct PageStoreView: View {
             .buttonStyle(PortfolioTabButton.customTab(for: selectedTab == 3))
         }
     }
+
 }
 
 #Preview {
