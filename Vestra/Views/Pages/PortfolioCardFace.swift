@@ -28,7 +28,7 @@ struct PortfolioCardFace: View {
                       Text(title)
                           .font(Font.theme.display(28, weight: .bold))
                           .foregroundStyle(Color.theme.onAsset)
-                      Text("1BR . Purchased Dec 2025")
+                      Text(page.kindDetails)
                           .font(Font.theme.ui(15))
                           .foregroundStyle(Color.theme.onAsset.opacity(0.7))
                   }
@@ -55,7 +55,7 @@ struct PortfolioCardFace: View {
         switch page {
         case .property(let p):
             VStack() {
-                if let imageUrl = p.coverImage,
+                if let imageUrl = p.propertyData?.coverImage,
                      let url = URL(string: imageUrl) {
                         KFImage(url)
                           .resizable()

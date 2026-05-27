@@ -18,8 +18,16 @@ struct CustomGroupBox: GroupBoxStyle {
         .frame(maxWidth: .infinity)
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 15)
-                .fill(accentColor)
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(accentColor)
+                Circle()
+                    .fill(Color.black.opacity(0.12))
+                    .frame(width: 170)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .offset(x: 50, y: -50)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 15))
         )
     }
 

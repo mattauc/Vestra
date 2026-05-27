@@ -79,12 +79,12 @@ struct PageStoreView: View {
                                         } header: {
                                             HStack {
                                                 groupedPages[section]?.first?.kindImage
-                                                      .font(.title.bold())
+                                                      .font(.title2.bold())
                                                       .foregroundStyle(Color.white)
-                                                      .frame(width: 40, height: 40)
+                                                      .frame(width: 35, height: 35)
                                                       .padding(5)
                                                   Text(section)
-                                                      .font(.title2.bold())
+                                                      .font(.title3.bold())
                                                       .foregroundStyle(Color.white)
                                                       .lineLimit(1)
                                                       .frame(maxWidth: .infinity, alignment: .leading)
@@ -107,8 +107,8 @@ struct PageStoreView: View {
                     switch page {
                     case .property(let p):
                         PropertyPageView(
-                                manager: PropertyPageManager(pageId: p.id, pageStore: pageStore),
                                 pageId: p.id,
+                                pageStore: pageStore,
                                 pageIndex: $pageIndex,
                                 path: $path
                             )

@@ -86,8 +86,56 @@ protocol PagePayload {
 }
 
 extension PortfolioPage {
-      var isProperty: Bool { if case .property = self { return true }; return false }
-      var isETF: Bool { if case .etf = self { return true }; return false }
-      var isCrypto: Bool { if case .crypto = self { return true }; return false }
-  }
+    var isProperty: Bool { if case .property = self { return true }; return false }
+    var isETF: Bool { if case .etf = self { return true }; return false }
+    var isCrypto: Bool { if case .crypto = self { return true }; return false }
+}
+
+extension PortfolioPage {
+    var kindDetails: String {
+        switch self {
+        case .property(let p):
+            guard let data = p.propertyData else { return "" }
+            let type = data.propertyType ?? ""
+            let beds = data.bedrooms.map { "\($0)BR" } ?? ""
+            let date = data.lastSoldDate?.formattedYearMonth() ?? ""
+            return "\(type) · \(beds) · \(date)"
+        case .etf:    return ""
+        case .crypto: return ""
+        }
+    }
+
+    var kindValue: String {
+        switch self {
+        case .property(let p):
+            let value = p.propertyData?.estimate?.mid ?? p.propertyData?.lastSoldPrice ?? 0
+            return value.formattedAUD()
+        case .etf:    return ""
+        case .crypto: return ""
+        }
+    }
+
+    var kindChange: String {
+        switch self {
+        case .property(let p):
+            guard let mid = p.propertyData?.estimate?.mid,
+                  let purchased = p.propertyData?.lastSoldPrice,
+                  purchased > 0 else { return "" }
+            let pct = (mid - purchased) / purchased * 100
+            return String(format: "%+.1f%%", pct)
+        case .etf:    return ""
+        case .crypto: return ""
+        }
+    }
+
+    var kindChangeIsPositive: Bool {
+        switch self {
+        case .property(let p):
+            guard let mid = p.propertyData?.estimate?.mid,
+                  let purchased = p.propertyData?.lastSoldPrice else { return true }
+            return mid >= purchased
+        default: return true
+        }
+    }
+}
 

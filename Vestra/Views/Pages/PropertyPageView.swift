@@ -11,20 +11,29 @@ import Kingfisher
 struct PropertyPageView: View {
     
     @EnvironmentObject private var pageStore: PageStore
-    @ObservedObject var manager: PropertyPageManager
-    
+    @StateObject private var manager: PropertyPageManager
+
     let pageId: UUID
     @Binding var pageIndex: Int
     @Binding var path: NavigationPath
     @State var pageTitle: String = ""
     @State var isEditingTitle = false
     @State private var showingLoanEditor = false
-    
+    @State private var showingExpensesEditor = false
+
     private let cardHeight: CGFloat = 320
+
+    init(pageId: UUID, pageStore: PageStore, pageIndex: Binding<Int>, path: Binding<NavigationPath>) {
+        self.pageId = pageId
+        _pageIndex = pageIndex
+        _path = path
+        _manager = StateObject(wrappedValue: PropertyPageManager(pageId: pageId, pageStore: pageStore))
+    }
     
     var body: some View {
         ZStack {
             Color.theme.depth
+                .ignoresSafeArea()
             VStack {
                 GroupBox(label: titleDisplay
                     .fixedSize(horizontal: false, vertical: true)) {
@@ -53,9 +62,17 @@ struct PropertyPageView: View {
                     .padding([.horizontal])
                     .padding(.bottom, 5)
                 loanDisplay
+                    .padding(.bottom, 5)
+                HStack {
+                    expenses
+                        .padding(.leading)
+                        .padding(.trailing, 5)
+                    activityDisplay
+                        .padding(.trailing)
+                }
                 Spacer()
             }
-            .padding(.top, 110)
+//
             
         }
         .toolbar {
@@ -76,7 +93,6 @@ struct PropertyPageView: View {
                 }
           }
 
-        .ignoresSafeArea()
     }
     
     var titleDisplay: some View {
@@ -239,7 +255,7 @@ struct PropertyPageView: View {
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Loan")
-                    .font(Font.theme.display(20).bold())
+                    .font(Font.theme.display(17).bold())
                     .foregroundStyle(Color.black)
                 Spacer()
                 HStack(spacing: 4) {
@@ -299,15 +315,151 @@ struct PropertyPageView: View {
         )
         .padding([.horizontal])
     }
-//    
-//    var expenses: some View {
-//        
-//    }
-//    
-//    var activityDisplay: some View {
-//
-//    }
-//    
+    
+    var expenses: some View {
+        let total = manager.totalExpenses
+
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Expenses")
+                    .font(Font.theme.display(16).bold())
+                    .foregroundStyle(Color.black)
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
+                    
+                    .padding(.leading)
+                Spacer()
+                Text("\(total.formattedAUD())/mo")
+                    .font(Font.theme.mono(13, weight: .heavy))
+                    .foregroundStyle(Color.black.opacity(0.5))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                Button {
+                    showingExpensesEditor = true
+                } label: {
+                    Image(systemName: "pencil")
+                        .font(.body)
+                        .foregroundStyle(Color.black.opacity(0.4))
+                    
+                        .padding(.trailing, 6)
+                }
+                .popover(isPresented: $showingExpensesEditor) {
+                    ExpensesEditorSheet(manager: manager)
+                        .presentationDetents([.height(420)])
+                }
+            }
+            .padding(.top)
+
+            GeometryReader { geo in
+                let widthFor: (Double) -> CGFloat = { price in
+                    total > 0 ? geo.size.width * CGFloat(price / total) : 0
+                }
+                HStack(spacing: 0) {
+                    Color.theme.property.frame(width: widthFor(manager.strataPrice))
+                    Color.theme.etf.frame(width: widthFor(manager.councilRatesPrice))
+                    Color.theme.crypto.frame(width: widthFor(manager.insurancePrice))
+                    Color.yellow.frame(width: widthFor(manager.maintenancePrice))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.theme.depth)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .frame(height: 8)
+                .animation(
+                    .spring(response: 0.5, dampingFraction: 0.7),
+                    value: [manager.strataPrice, manager.councilRatesPrice,
+                            manager.insurancePrice, manager.maintenancePrice]
+                )
+            }
+            .frame(height: 8)
+            .padding(.horizontal)
+
+            expensesList
+        }
+        .frame(maxWidth: .infinity, maxHeight: 195)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 1, y: 1)
+        )
+    }
+    
+    var expensesList: some View {
+        VStack {
+            HStack {
+                Circle()
+                    .fill(Color.theme.property)
+                    .frame(width: 10, height: 10)
+                Text("Strata")
+                    .font(Font.theme.display(13).bold())
+                Spacer()
+                Text(String(manager.strataPrice.formattedAUD()))
+                    .font(Font.theme.display(13, weight: .bold))
+            }
+            .padding(.horizontal)
+            Divider()
+                .padding(.horizontal)
+            HStack {
+                Circle()
+                    .fill(Color.theme.etf)
+                    .frame(width: 10, height: 10)
+                Text("Council")
+                    .font(Font.theme.display(13).bold())
+                Spacer()
+                Text(manager.councilRatesPrice.formattedAUD())
+                    .font(Font.theme.display(13, weight: .bold))
+            }
+            .padding(.horizontal)
+            Divider()
+                .padding(.horizontal)
+            HStack {
+                Circle()
+                    .fill(Color.theme.crypto)
+                    .frame(width: 10, height: 10)
+                Text("Insurance")
+                    .font(Font.theme.display(13).bold())
+                Spacer()
+                Text(manager.insurancePrice.formattedAUD())
+                    .font(Font.theme.display(13, weight: .bold))
+            }
+            .padding(.horizontal)
+            Divider()
+                .padding(.horizontal)
+            HStack {
+                Circle()
+                    .fill(Color.yellow)
+                    .frame(width: 10, height: 10)
+                Text("Maintain")
+                    .font(Font.theme.display(13).bold())
+                Spacer()
+                Text(manager.maintenancePrice.formattedAUD())
+                    .font(Font.theme.display(13, weight: .bold))
+            }
+            .padding([.horizontal, .bottom])
+        }
+    }
+    
+    var activityDisplay: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Activity")
+                    .font(Font.theme.display(17).bold())
+                    .foregroundStyle(Color.black)
+                    .padding(.horizontal)
+                Spacer()
+            }
+            
+            Divider()
+                .padding(.horizontal)
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: 195)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 1, y: 1)
+                
+        )
+    }
 }
 
 #Preview {
@@ -318,11 +470,10 @@ struct PropertyPageView: View {
 
     let store = PageStore(authManager: auth)
     let pageId = UUID()
-    let manager = PropertyPageManager(pageId: pageId, pageStore: store)
 
     return PropertyPageView(
-        manager: manager,
         pageId: pageId,
+        pageStore: store,
         pageIndex: $pageIndex,
         path: $path
     )

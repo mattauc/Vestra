@@ -77,6 +77,10 @@ final class PropertyPageManager: ObservableObject {
     var propertyYield: Double {
         currentPage.propertyData?.rentalEstimate?.yieldPercent ?? 0.0
     }
+    
+    var coverImage: String {
+        currentPage.propertyData?.coverImage ?? ""
+    }
 
     var equity: Double {
         estimateMidPrice - currentPage.loanBalance
@@ -85,19 +89,45 @@ final class PropertyPageManager: ObservableObject {
     var interestRate: Double {
         currentPage.interestRate
     }
+    
+    var strataPrice: Double {
+        currentPage.expenses?.strata ?? 0.0
+    }
 
-    func setInterestRate(_ value: Double) {
-        currentPage.interestRate = value
+    var councilRatesPrice: Double {
+        currentPage.expenses?.councilRates ?? 0.0
+    }
+
+    var insurancePrice: Double {
+        currentPage.expenses?.insurance ?? 0.0
+    }
+
+    var maintenancePrice: Double {
+        currentPage.expenses?.maintenance ?? 0.0
+    }
+
+    var totalExpenses: Double {
+        strataPrice + councilRatesPrice + insurancePrice + maintenancePrice
+    }
+
+    func setExpensesLocally(strata: Double, councilRates: Double, insurance: Double, maintenance: Double) {
+        currentPage.expenses = Expenses(strata: strata, councilRates: councilRates, insurance: insurance, maintenance: maintenance)
+    }
+
+    func persistCurrentPage() {
         pageStore.updatePage(.property(currentPage))
+    }
+
+    func setInterestRateLocally(_ value: Double) {
+        currentPage.interestRate = value
     }
 
     var loanTerm: Int {
         currentPage.loanTerm
     }
 
-    func setLoanTerm(_ value: Int) {
+    func setLoanTermLocally(_ value: Int) {
         currentPage.loanTerm = value
-        pageStore.updatePage(.property(currentPage))
     }
 
     var monthlyRepayment: Double {
@@ -110,7 +140,7 @@ final class PropertyPageManager: ObservableObject {
 
     var yearsHeld: String {
         let currentYear = Calendar.current.component(.year, from: Date())
-        let date = currentPage.propertyData?.lastSoldDate.flatMap { Self.formatYearMonth($0) } ?? String(currentYear)
+        let date = currentPage.propertyData?.lastSoldDate?.formattedYearMonth() ?? String(currentYear)
         let year = Int(date.split(separator: "-")[0]) ?? 0
         return "\(currentYear - year) yrs"
     }
@@ -139,19 +169,8 @@ final class PropertyPageManager: ObservableObject {
         let type = currentPage.propertyData?.propertyType ?? "—"
         let beds = currentPage.propertyData?.bedrooms.map { "\($0)" } ?? "—"
         let baths = currentPage.propertyData?.bathrooms.map { "\($0)" } ?? "—"
-        let date = currentPage.propertyData?.lastSoldDate.flatMap { Self.formatYearMonth($0) } ?? "—"
+        let date = currentPage.propertyData?.lastSoldDate?.formattedYearMonth() ?? "—"
         return "\(type) . \(beds) BR . \(baths) BA . \(date)"
-    }
-
-    private static func formatYearMonth(_ raw: String) -> String? {
-        let parser = DateFormatter()
-        parser.dateFormat = "yyyy-MM-dd"
-        parser.locale = Locale(identifier: "en_AU")
-        guard let parsed = parser.date(from: raw) else { return String(raw.prefix(7)) }
-        let output = DateFormatter()
-        output.dateFormat = "MMM yyyy"
-        output.locale = Locale(identifier: "en_AU")
-        return output.string(from: parsed)
     }
     
     var propertyGain: Double {
@@ -222,7 +241,6 @@ final class PropertyPageManager: ObservableObject {
         
         print(data)
         currentPage.propertyData = data
-        currentPage.coverImage = data.coverImage
         currentPage.propertyAddress = data.address ?? currentPage.propertyAddress
 
         // Persist to Firestore

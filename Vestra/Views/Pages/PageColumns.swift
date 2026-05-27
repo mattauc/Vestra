@@ -13,46 +13,42 @@ struct PageColumns: View {
     var page: PortfolioPage
     
     var body: some View {
-        ZStack {
-
-            HStack() {
-                page.kindImage
-                    .font(Font.body.bold())
-                    .foregroundStyle(Color.black)
-                    .frame(width: 40, height: 40)
-                    .background(page.kindColor.opacity(0.15), in: RoundedRectangle(cornerRadius: 15))
-
-                    .padding(.trailing)
-                VStack {
-                    Text(page.title)
-                        .font(Font.theme.display(20).bold())
-                        .foregroundStyle(Color.black)
-                        .lineLimit(1)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-//                            .minimumScaleFactor(0.6)
-                    Text("1BR . Dec 2025")
-                        .font(Font.theme.ui(16))
-                        .foregroundStyle(Color.black.opacity(0.5))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                
-//                    .padding(.horizontal)
-                Spacer()
-                VStack {
-                    Text("$700k")
-                        .font(Font.theme.display(20).bold())
-                        .foregroundStyle(Color.black)
-                    Text("+3.0%")
-                        .font(Font.theme.ui(15))
-                        .foregroundStyle(Color.theme.highlight)
-                }
-            }
-        
-            .padding(.horizontal)
-            
+        HStack {
+            page.kindImage
+                .font(Font.body.bold())
+                .foregroundStyle(Color.black)
+                .frame(width: 40, height: 40)
+                .background(page.kindColor.opacity(0.15), in: RoundedRectangle(cornerRadius: 15))
+                .padding(.trailing)
+            columnContent
         }
+        .padding(.horizontal)
         Divider()
             .padding(.horizontal)
+    }
+
+    @ViewBuilder
+    var columnContent: some View {
+        VStack {
+            Text(page.title)
+                .font(Font.theme.display(20).bold())
+                .foregroundStyle(Color.black)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(page.kindDetails)
+                .font(Font.theme.ui(16))
+                .foregroundStyle(Color.black.opacity(0.5))
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        Spacer()
+        VStack(alignment: .trailing) {
+            Text(page.kindValue)
+                .font(Font.theme.display(20).bold())
+                .foregroundStyle(Color.black)
+            Text(page.kindChange)
+                .font(Font.theme.ui(15))
+                .foregroundStyle(page.kindChangeIsPositive ? Color.theme.highlight : Color.red)
+        }
     }
 
 }

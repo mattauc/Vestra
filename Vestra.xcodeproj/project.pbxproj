@@ -10,9 +10,11 @@
 		1B185FB75C24434FBD1C7893 /* CryptoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C558C420D46C9A1E506CC /* CryptoPageView.swift */; };
 		1BEC91787A244426B3C9C8C5 /* Font+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398551B9FED4D6290B977D1 /* Font+Theme.swift */; };
 		A46582F4A97745DA9242F2A6 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEE47AC6B442898BCD6E9D /* Double+Currency.swift */; };
+		F58E7EB6C59244999C5079E4 /* String+DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CCEAA32F9743F7A11F0BE5 /* String+DateFormatting.swift */; };
 		2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBE79F70274A539D323944 /* BentoVLogo.swift */; };
 		69E9C3D76E534100AB396266 /* StatPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0F2EBE6DF49B0ABFC9EA5 /* StatPill.swift */; };
 		FE1B6884FFB84BEA9357F283 /* LoanEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */; };
+		0D58CE3E83D741ECA7046BD6 /* ExpensesEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */; };
 		671D952F2F736EB900980992 /* PageCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D952E2F736EB900980992 /* PageCreation.swift */; };
 		671D95312F738EFA00980992 /* PageTypeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95302F738EFA00980992 /* PageTypeTab.swift */; };
 		671D95332F73954E00980992 /* ETFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95322F73954E00980992 /* ETFPage.swift */; };
@@ -81,6 +83,7 @@
 		4BBBE79F70274A539D323944 /* BentoVLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoVLogo.swift; sourceTree = "<group>"; };
 		51E0F2EBE6DF49B0ABFC9EA5 /* StatPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatPill.swift; sourceTree = "<group>"; };
 		0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanEditorSheet.swift; sourceTree = "<group>"; };
+		7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesEditorSheet.swift; sourceTree = "<group>"; };
 		671D952E2F736EB900980992 /* PageCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCreation.swift; sourceTree = "<group>"; };
 		671D95302F738EFA00980992 /* PageTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTypeTab.swift; sourceTree = "<group>"; };
 		671D95322F73954E00980992 /* ETFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPage.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		8398551B9FED4D6290B977D1 /* Font+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Theme.swift"; sourceTree = "<group>"; };
 		9927CCDA60B346E79A3DF657 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		BBDEE47AC6B442898BCD6E9D /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
+		35CCEAA32F9743F7A11F0BE5 /* String+DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormatting.swift"; sourceTree = "<group>"; };
 		C615BAA3FBCC4C9CA64D1C3D /* StriatedPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StriatedPlaceholder.swift; sourceTree = "<group>"; };
 		C85C558C420D46C9A1E506CC /* CryptoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +172,7 @@
 				671D952E2F736EB900980992 /* PageCreation.swift */,
 				67D88C342FBC0DE700304CA2 /* PageColumns.swift */,
 				0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */,
+				7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				9927CCDA60B346E79A3DF657 /* Color+Theme.swift */,
 				8398551B9FED4D6290B977D1 /* Font+Theme.swift */,
 				BBDEE47AC6B442898BCD6E9D /* Double+Currency.swift */,
+				35CCEAA32F9743F7A11F0BE5 /* String+DateFormatting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,12 +493,14 @@
 				67725F852F70F8FF0049445D /* PageView.swift in Sources */,
 				736A7B221FAC4A0597471A6E /* Color+Theme.swift in Sources */,
 				A46582F4A97745DA9242F2A6 /* Double+Currency.swift in Sources */,
+				F58E7EB6C59244999C5079E4 /* String+DateFormatting.swift in Sources */,
 				67D88C372FBD839100304CA2 /* CustomTabBar.swift in Sources */,
 				1BEC91787A244426B3C9C8C5 /* Font+Theme.swift in Sources */,
 				2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */,
 				D3F48960E81D4FB8ABD0ED22 /* StriatedPlaceholder.swift in Sources */,
 				69E9C3D76E534100AB396266 /* StatPill.swift in Sources */,
 				FE1B6884FFB84BEA9357F283 /* LoanEditorSheet.swift in Sources */,
+				0D58CE3E83D741ECA7046BD6 /* ExpensesEditorSheet.swift in Sources */,
 				88291DFA5FED492C8BAE5119 /* CustomGroupBox.swift in Sources */,
 				C8A05D7FFAA846F29637D47A /* PortfolioCardFace.swift in Sources */,
 				67725F7C2F6FE1500049445D /* PageStoreView.swift in Sources */,
