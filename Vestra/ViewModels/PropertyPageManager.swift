@@ -109,6 +109,10 @@ final class PropertyPageManager: ObservableObject {
     var totalExpenses: Double {
         strataPrice + councilRatesPrice + insurancePrice + maintenancePrice
     }
+    
+    var soldHistory: [SalesHistoryEntry] {
+        currentPage.propertyData?.salesHistory ?? []
+    }
 
     func setExpensesLocally(strata: Double, councilRates: Double, insurance: Double, maintenance: Double) {
         currentPage.expenses = Expenses(strata: strata, councilRates: councilRates, insurance: insurance, maintenance: maintenance)
@@ -129,6 +133,10 @@ final class PropertyPageManager: ObservableObject {
     func setLoanTermLocally(_ value: Int) {
         currentPage.loanTerm = value
     }
+    
+    var isEstimatePositive: Bool {
+        currentPage.propertyData?.estimate?.mid ?? 0.0 > currentPage.propertyData?.salesHistory?.first?.price ?? 0.0
+    }
 
     var monthlyRepayment: Double {
         let r = currentPage.interestRate / 100 / 12
@@ -136,6 +144,35 @@ final class PropertyPageManager: ObservableObject {
         guard n > 0 else { return 0 }
         guard r > 0 else { return currentPage.loanBalance / n }
         return currentPage.loanBalance * (r * pow(1 + r, n)) / (pow(1 + r, n) - 1)
+    }
+
+    // MARK: - Cash flow
+
+    /// Rent is stored weekly; convert to a monthly figure to match repayment/expenses.
+    var monthlyRent: Double {
+        rentalEstimate * 52 / 12
+    }
+
+    var monthlyOutgoings: Double {
+        monthlyRepayment + totalExpenses
+    }
+
+    var monthlyCashFlow: Double {
+        monthlyRent - monthlyOutgoings
+    }
+
+    var annualCashFlow: Double {
+        monthlyCashFlow * 12
+    }
+
+    var isNegativelyGeared: Bool {
+        monthlyCashFlow < 0
+    }
+
+    /// Share of monthly outgoings covered by rent (0...1) — drives the coverage bar.
+    var rentCoverage: Double {
+        guard monthlyOutgoings > 0 else { return monthlyRent > 0 ? 1 : 0 }
+        return min(1, max(0, monthlyRent / monthlyOutgoings))
     }
 
     var yearsHeld: String {
