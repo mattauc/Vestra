@@ -33,3 +33,5 @@ fastlane/test_output
 
 # Claude Code local settings (machine-specific, not needed in repo)
 .claude/settings.local.json
+.claude/
+CLAUDE.md
