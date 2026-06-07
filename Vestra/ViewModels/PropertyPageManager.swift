@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import Combine
 import CoreLocation
 
 @MainActor
 final class PropertyPageManager: ObservableObject {
-    
+
     private let pageId: UUID
     private let pageStore: PageStore
-    
+    private var cancellables = Set<AnyCancellable>()
+
     @Published private(set) var currentPage: PropertyPage
-    
+
     init(pageId: UUID, pageStore: PageStore) {
         self.pageId = pageId
         self.pageStore = pageStore
@@ -27,6 +29,18 @@ final class PropertyPageManager: ObservableObject {
             // Default to an empty page instead of crashing.
             self.currentPage = PropertyPage()
         }
+
+        // Keep currentPage in sync whenever PageStore.pages changes — including
+        // updates pushed by the backend worker via the Firestore snapshot listener.
+        pageStore.$pages
+            .sink { [weak self] pages in
+                guard let self else { return }
+                if let portfolio = pages.first(where: { $0.id == self.pageId }),
+                   case .property(let updated) = portfolio {
+                    self.currentPage = updated
+                }
+            }
+            .store(in: &cancellables)
     }
     
     var isActive: Bool {
@@ -96,6 +110,18 @@ final class PropertyPageManager: ObservableObject {
 
     var councilRatesPrice: Double {
         currentPage.expenses?.councilRates ?? 0.0
+    }
+    
+    var firstYearPerformance: Double {
+        currentPage.propertyData?.suburbPerformance?.cagr1yPercent ?? 0.0
+    }
+    
+    var thirdYearPerformance: Double {
+        currentPage.propertyData?.suburbPerformance?.cagr3yPercent ?? 0.0
+    }
+    
+    var fithYearPerformance: Double {
+        currentPage.propertyData?.suburbPerformance?.cagr5yPercent ?? 0.0
     }
 
     var insurancePrice: Double {
@@ -256,7 +282,7 @@ final class PropertyPageManager: ObservableObject {
         }
 
 
-        try? await fetchPropertyData(
+        await requestEnrichment(
             streetNumber: unit+streetNumber,
             streetName: streetName,
             suburb: suburb,
@@ -265,22 +291,42 @@ final class PropertyPageManager: ObservableObject {
         )
     }
     
-    func fetchPropertyData(streetNumber: String, streetName: String, suburb: String, state: String, postcode: String) async throws {
-        let data: PropertyData = try await NetworkManager.shared.request(
-            PropertyEndpoint.getProperty(
-            streetNumber: streetNumber,
-            streetName: streetName,
-            suburb: suburb,
-            state: state,
-            postcode: postcode
-            )
-        )
-        
-        print(data)
-        currentPage.propertyData = data
-        currentPage.propertyAddress = data.address ?? currentPage.propertyAddress
+    /// Ask the backend to enrich this property. Fire-and-forget — the worker
+    /// writes the result directly to Firestore, and the snapshot listener
+    /// delivers it to `currentPage` via the `pageStore.$pages` sink in init.
+    func requestEnrichment(streetNumber: String, streetName: String, suburb: String, state: String, postcode: String) async {
+        guard let uid = pageStore.currentUid else {
+            print("requestEnrichment: no authenticated user")
+            return
+        }
 
-        // Persist to Firestore
+        // 1. Mark the page as enriching + persist so the UI shows a pending state
+        //    immediately, before the network request even starts.
+        currentPage.enrichmentStatus = .enriching
         pageStore.updatePage(.property(currentPage))
+
+        // 2. Fire-and-forget the enrich request. We never read the response body —
+        //    the worker writes enriched data straight to Firestore.
+        do {
+            try await NetworkManager.shared.request(
+                PropertyEndpoint.enrichProperty(
+                    uid: uid,
+                    pageId: pageId.uuidString,
+                    address: .init(
+                        streetNumber: streetNumber,
+                        streetName: streetName,
+                        suburb: suburb,
+                        state: state,
+                        postcode: postcode
+                    )
+                )
+            )
+        } catch {
+            // If the HTTP request itself fails (network down, backend unreachable),
+            // flip the page to failed so the UI can show a retry option.
+            print("requestEnrichment failed: \(error)")
+            currentPage.enrichmentStatus = .failed
+            pageStore.updatePage(.property(currentPage))
+        }
     }
 }

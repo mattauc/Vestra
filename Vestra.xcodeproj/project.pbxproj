@@ -15,8 +15,11 @@
 		671D95312F738EFA00980992 /* PageTypeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95302F738EFA00980992 /* PageTypeTab.swift */; };
 		671D95332F73954E00980992 /* ETFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95322F73954E00980992 /* ETFPage.swift */; };
 		671D95352F73955C00980992 /* CryptoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95342F73955C00980992 /* CryptoPage.swift */; };
+		67ED13C52FF1234500980992 /* EnrichmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED13C42FF1234500980992 /* EnrichmentStatus.swift */; };
 		67473F492FC8490B009131D7 /* CashFlowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F482FC8490B009131D7 /* CashFlowCard.swift */; };
 		67473F4B2FC849FB009131D7 /* SalesChartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4A2FC849FB009131D7 /* SalesChartCard.swift */; };
+		67473F4E2FCFA417009131D7 /* ETFPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4D2FCFA417009131D7 /* ETFPageManager.swift */; };
+		67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */; };
 		676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603922F73B5160043C8B5 /* ETFPageView.swift */; };
 		676603972F74FA530043C8B5 /* PropertyPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603962F74FA530043C8B5 /* PropertyPageManager.swift */; };
 		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
@@ -90,8 +93,11 @@
 		671D95302F738EFA00980992 /* PageTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTypeTab.swift; sourceTree = "<group>"; };
 		671D95322F73954E00980992 /* ETFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPage.swift; sourceTree = "<group>"; };
 		671D95342F73955C00980992 /* CryptoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPage.swift; sourceTree = "<group>"; };
+		67ED13C42FF1234500980992 /* EnrichmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrichmentStatus.swift; sourceTree = "<group>"; };
 		67473F482FC8490B009131D7 /* CashFlowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowCard.swift; sourceTree = "<group>"; };
 		67473F4A2FC849FB009131D7 /* SalesChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesChartCard.swift; sourceTree = "<group>"; };
+		67473F4D2FCFA417009131D7 /* ETFPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageManager.swift; sourceTree = "<group>"; };
+		67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFBasketCard.swift; sourceTree = "<group>"; };
 		676603922F73B5160043C8B5 /* ETFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageView.swift; sourceTree = "<group>"; };
 		676603962F74FA530043C8B5 /* PropertyPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageManager.swift; sourceTree = "<group>"; };
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -170,23 +176,32 @@
 				67725F792F6FB9E80049445D /* PropertyPageView.swift */,
 				67473F482FC8490B009131D7 /* CashFlowCard.swift */,
 				67473F4A2FC849FB009131D7 /* SalesChartCard.swift */,
+				0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */,
+				7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */,
 			);
 			path = Property;
+			sourceTree = "<group>";
+		};
+		67473F4C2FCFA1E9009131D7 /* ETF */ = {
+			isa = PBXGroup;
+			children = (
+				676603922F73B5160043C8B5 /* ETFPageView.swift */,
+				67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */,
+			);
+			path = ETF;
 			sourceTree = "<group>";
 		};
 		67725F782F6FB9C90049445D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				67473F4C2FCFA1E9009131D7 /* ETF */,
 				67473F472FC848D8009131D7 /* Property */,
 				67725F842F70F8FF0049445D /* PageView.swift */,
 				724967780AF54519BBD2A9C9 /* PortfolioCardFace.swift */,
-				676603922F73B5160043C8B5 /* ETFPageView.swift */,
 				C85C558C420D46C9A1E506CC /* CryptoPageView.swift */,
 				67725F7B2F6FE1500049445D /* PageStoreView.swift */,
 				671D952E2F736EB900980992 /* PageCreation.swift */,
 				67D88C342FBC0DE700304CA2 /* PageColumns.swift */,
-				0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */,
-				7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -288,6 +303,7 @@
 				67725F812F70B0590049445D /* PortfolioPage.swift */,
 				671D95322F73954E00980992 /* ETFPage.swift */,
 				671D95342F73955C00980992 /* CryptoPage.swift */,
+				67ED13C42FF1234500980992 /* EnrichmentStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,6 +323,7 @@
 				67AFEC232EB74E6E003BBF06 /* UserManager.swift */,
 				67725F772EB8A1980049445D /* PageStore.swift */,
 				676603962F74FA530043C8B5 /* PropertyPageManager.swift */,
+				67473F4D2FCFA417009131D7 /* ETFPageManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -480,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67473F4E2FCFA417009131D7 /* ETFPageManager.swift in Sources */,
 				67725F7E2F6FE1740049445D /* SettingsView.swift in Sources */,
 				67725F782EB8A1980049445D /* PageStore.swift in Sources */,
 				67725F7A2F6FB9E80049445D /* PropertyPageView.swift in Sources */,
@@ -500,6 +518,7 @@
 				676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */,
 				1B185FB75C24434FBD1C7893 /* CryptoPageView.swift in Sources */,
 				671D95332F73954E00980992 /* ETFPage.swift in Sources */,
+				67ED13C52FF1234500980992 /* EnrichmentStatus.swift in Sources */,
 				67D88C332FBAEE8B00304CA2 /* PortfolioTabButton.swift in Sources */,
 				67AFEC1E2EB74E64003BBF06 /* Dashboard.swift in Sources */,
 				67AFEC2F2EB74E73003BBF06 /* DashboardView.swift in Sources */,
@@ -514,6 +533,7 @@
 				67473F492FC8490B009131D7 /* CashFlowCard.swift in Sources */,
 				2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */,
 				D3F48960E81D4FB8ABD0ED22 /* StriatedPlaceholder.swift in Sources */,
+				67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */,
 				69E9C3D76E534100AB396266 /* StatPill.swift in Sources */,
 				FE1B6884FFB84BEA9357F283 /* LoanEditorSheet.swift in Sources */,
 				0D58CE3E83D741ECA7046BD6 /* ExpensesEditorSheet.swift in Sources */,

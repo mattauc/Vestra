@@ -113,7 +113,12 @@ struct PageStoreView: View {
                                 path: $path
                             )
                     case .etf(let e):
-                        ETFPageView(pageId: e.id, pageIndex: $pageIndex, path: $path)
+                        ETFPageView(
+                            pageId: e.id,
+                            pageStore: pageStore,
+                            pageIndex: $pageIndex,
+                            path: $path
+                        )
                     case .crypto(let c):
                         CryptoPageView(pageId: c.id, pageIndex: $pageIndex, path: $path)
                     }
