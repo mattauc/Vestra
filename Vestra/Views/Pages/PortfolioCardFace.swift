@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Charts
 
 struct PortfolioCardFace: View {
     let page: PortfolioPage

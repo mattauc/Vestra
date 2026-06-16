@@ -49,7 +49,8 @@ private struct AnyEncodable: Encodable {
 enum PropertyEndpoint: APIEndpoint {
     /// Fire-and-forget enrichment request. Backend enqueues a scrape job and
     /// the worker writes the enriched data straight into Firestore.
-    case enrichProperty(uid: String, pageId: String, address: Address)
+    /// The `token` is a Firebase ID token used by the backend to verify the user.
+    case enrichProperty(token: String, pageId: String, address: Address)
 
     struct Address: Codable {
         let streetNumber: String
@@ -68,12 +69,10 @@ enum PropertyEndpoint: APIEndpoint {
     }
 
     struct EnrichBody: Codable {
-        let uid: String
         let pageId: String
         let address: Address
 
         enum CodingKeys: String, CodingKey {
-            case uid
             case pageId = "page_id"
             case address
         }
@@ -97,14 +96,15 @@ enum PropertyEndpoint: APIEndpoint {
 
     var headers: [String: String]? {
         switch self {
-        case .enrichProperty: return nil
+        case .enrichProperty(let token, _, _):
+            return ["Authorization": "Bearer \(token)"]
         }
     }
 
     var body: Encodable? {
         switch self {
-        case .enrichProperty(let uid, let pageId, let address):
-            return EnrichBody(uid: uid, pageId: pageId, address: address)
+        case .enrichProperty(_, let pageId, let address):
+            return EnrichBody(pageId: pageId, address: address)
         }
     }
 }

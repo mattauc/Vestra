@@ -37,11 +37,11 @@ struct PropertyPageView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: 7, pinnedViews: [.sectionHeaders]) {
-//                    
+//
 //                    Section {
-//                        
+//
 //                    } header: {
-//                        
+//
 //                    }
                     GroupBox(label: titleDisplay
                         .fixedSize(horizontal: false, vertical: true)) {
@@ -51,7 +51,7 @@ struct PropertyPageView: View {
                                 .foregroundStyle(Color.theme.onAsset.opacity(0.7))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.bottom, 20)
-                            
+
                             estimateDisplay
                             HStack {
                                 StatPill(label: "Purchase", value: manager.lastSoldPrice.formattedAUD(), isCard: true)
@@ -60,7 +60,7 @@ struct PropertyPageView: View {
                                 Spacer()
                                 StatPill(label: "Held", value: manager.yearsHeld, isCard: true)
                             }
-                
+
                         }
                     }
                         .padding([.top, .horizontal])
@@ -87,7 +87,7 @@ struct PropertyPageView: View {
             }
 
 //
-            
+
         }
         .toolbar {
               ToolbarItem(placement: .principal) {
@@ -108,7 +108,7 @@ struct PropertyPageView: View {
           }
 
     }
-    
+
     var titleDisplay: some View {
         HStack {
             if isEditingTitle {

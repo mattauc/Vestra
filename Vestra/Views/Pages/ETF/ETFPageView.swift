@@ -29,23 +29,21 @@ struct ETFPageView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: 7, pinnedViews: [.sectionHeaders]) {
-                    
-                    GroupBox() {
-                        VStack() {
-                            Text("ETF")
-                
-                        }
-                    }
-                    ETFBasketCard(manager: manager)
 
-                    
+                    ETFProjectionCard()
+                        .padding([.top, .horizontal])
+                        .padding(.bottom, 5)
+
+                    ETFBasketCard(manager: manager)
+                        .padding([.horizontal])
+                        .padding(.bottom, 5)
+
+                    ETFAssumptionsCard()
+                        .padding([.horizontal])
+                        .padding(.bottom, 5)
                 }
-                
+
             }
-            
-            .padding([.top, .horizontal])
-            .padding(.bottom, 5)
-            .groupBoxStyle(.custom(for: .etf(ETFPage())))
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

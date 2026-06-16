@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreLocation
+import FirebaseAuth
 
 @MainActor
 final class PropertyPageManager: ObservableObject {
@@ -278,7 +279,7 @@ final class PropertyPageManager: ObservableObject {
         print(name)
         var unit = ""
         if name.contains("/") {
-          unit = String(name.split(separator: "/").first ?? "")+"-"
+          unit = String(name.split(separator: "/").first ?? "")+"/"
         }
 
 
@@ -295,22 +296,31 @@ final class PropertyPageManager: ObservableObject {
     /// writes the result directly to Firestore, and the snapshot listener
     /// delivers it to `currentPage` via the `pageStore.$pages` sink in init.
     func requestEnrichment(streetNumber: String, streetName: String, suburb: String, state: String, postcode: String) async {
-        guard let uid = pageStore.currentUid else {
+        // 1. Fetch a Firebase ID token. The backend verifies this token to
+        //    establish the user's identity — we never send a uid ourselves.
+        guard let user = Auth.auth().currentUser else {
             print("requestEnrichment: no authenticated user")
             return
         }
+        let token: String
+        do {
+            token = try await user.getIDToken()
+        } catch {
+            print("requestEnrichment: failed to fetch ID token — \(error)")
+            return
+        }
 
-        // 1. Mark the page as enriching + persist so the UI shows a pending state
+        // 2. Mark the page as enriching + persist so the UI shows a pending state
         //    immediately, before the network request even starts.
         currentPage.enrichmentStatus = .enriching
         pageStore.updatePage(.property(currentPage))
 
-        // 2. Fire-and-forget the enrich request. We never read the response body —
+        // 3. Fire-and-forget the enrich request. We never read the response body —
         //    the worker writes enriched data straight to Firestore.
         do {
             try await NetworkManager.shared.request(
                 PropertyEndpoint.enrichProperty(
-                    uid: uid,
+                    token: token,
                     pageId: pageId.uuidString,
                     address: .init(
                         streetNumber: streetNumber,
@@ -322,8 +332,8 @@ final class PropertyPageManager: ObservableObject {
                 )
             )
         } catch {
-            // If the HTTP request itself fails (network down, backend unreachable),
-            // flip the page to failed so the UI can show a retry option.
+            // If the HTTP request itself fails (network down, backend unreachable,
+            // 401 from auth, etc.), flip the page to failed so the UI can offer retry.
             print("requestEnrichment failed: \(error)")
             currentPage.enrichmentStatus = .failed
             pageStore.updatePage(.property(currentPage))

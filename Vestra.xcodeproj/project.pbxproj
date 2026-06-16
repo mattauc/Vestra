@@ -20,6 +20,8 @@
 		67473F4B2FC849FB009131D7 /* SalesChartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4A2FC849FB009131D7 /* SalesChartCard.swift */; };
 		67473F4E2FCFA417009131D7 /* ETFPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4D2FCFA417009131D7 /* ETFPageManager.swift */; };
 		67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */; };
+		67AAB1010000000000000002 /* ETFProjectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1010000000000000001 /* ETFProjectionCard.swift */; };
+		67AAB1020000000000000002 /* ETFAssumptionsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1020000000000000001 /* ETFAssumptionsCard.swift */; };
 		676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603922F73B5160043C8B5 /* ETFPageView.swift */; };
 		676603972F74FA530043C8B5 /* PropertyPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603962F74FA530043C8B5 /* PropertyPageManager.swift */; };
 		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
@@ -98,6 +100,8 @@
 		67473F4A2FC849FB009131D7 /* SalesChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesChartCard.swift; sourceTree = "<group>"; };
 		67473F4D2FCFA417009131D7 /* ETFPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageManager.swift; sourceTree = "<group>"; };
 		67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFBasketCard.swift; sourceTree = "<group>"; };
+		67AAB1010000000000000001 /* ETFProjectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFProjectionCard.swift; sourceTree = "<group>"; };
+		67AAB1020000000000000001 /* ETFAssumptionsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFAssumptionsCard.swift; sourceTree = "<group>"; };
 		676603922F73B5160043C8B5 /* ETFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageView.swift; sourceTree = "<group>"; };
 		676603962F74FA530043C8B5 /* PropertyPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageManager.swift; sourceTree = "<group>"; };
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 			children = (
 				676603922F73B5160043C8B5 /* ETFPageView.swift */,
 				67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */,
+				67AAB1010000000000000001 /* ETFProjectionCard.swift */,
+				67AAB1020000000000000001 /* ETFAssumptionsCard.swift */,
 			);
 			path = ETF;
 			sourceTree = "<group>";
@@ -534,6 +540,8 @@
 				2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */,
 				D3F48960E81D4FB8ABD0ED22 /* StriatedPlaceholder.swift in Sources */,
 				67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */,
+				67AAB1010000000000000002 /* ETFProjectionCard.swift in Sources */,
+				67AAB1020000000000000002 /* ETFAssumptionsCard.swift in Sources */,
 				69E9C3D76E534100AB396266 /* StatPill.swift in Sources */,
 				FE1B6884FFB84BEA9357F283 /* LoanEditorSheet.swift in Sources */,
 				0D58CE3E83D741ECA7046BD6 /* ExpensesEditorSheet.swift in Sources */,
