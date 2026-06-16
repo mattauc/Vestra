@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Charts
 
 struct PortfolioCardFace: View {
     let page: PortfolioPage
@@ -28,7 +29,7 @@ struct PortfolioCardFace: View {
                       Text(title)
                           .font(Font.theme.display(28, weight: .bold))
                           .foregroundStyle(Color.theme.onAsset)
-                      Text("1BR . Purchased Dec 2025")
+                      Text(page.kindDetails)
                           .font(Font.theme.ui(15))
                           .foregroundStyle(Color.theme.onAsset.opacity(0.7))
                   }
@@ -39,19 +40,11 @@ struct PortfolioCardFace: View {
                       .padding(14)
                       .background(Color.theme.onAsset.opacity(0.15), in: Circle())
               }
+
               .padding(.horizontal, 24)
-              .padding(.top, 36)
+              .padding(.top, 59)
                 cardBody
               Spacer()
-
-              // Stats row
-              HStack {
-                  StatPill(label: "Value", value: "$0")
-                  Spacer()
-                  StatPill(label: "Return", value: "0%")
-                  Spacer()
-                  StatPill(label: "Active", value: isActive ? "Yes" : "No")
-              }
               .padding(.horizontal, 24)
               .padding(.bottom, 36)
             }
@@ -63,7 +56,7 @@ struct PortfolioCardFace: View {
         switch page {
         case .property(let p):
             VStack() {
-                if let imageUrl = p.coverImage,
+                if let imageUrl = p.propertyData?.coverImage,
                      let url = URL(string: imageUrl) {
                         KFImage(url)
                           .resizable()
@@ -126,29 +119,8 @@ struct PortfolioCardFace: View {
     }
 }
 
-struct StatPill: View {
-    let label: String
-    let value: String
-
-    var body: some View {
-        VStack(spacing: 2) {
-            Text(value)
-                .font(Font.theme.display(17, weight: .semibold))
-                .foregroundStyle(Color.theme.onAsset)
-            Text(label.uppercased())
-                .font(Font.theme.mono(9, weight: .medium))
-                .foregroundStyle(Color.theme.onAsset.opacity(0.6))
-                .tracking(1.2)
-        }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
-        .background(Color.theme.onAsset.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
-    }
-}
-
-
 #Preview {
     PortfolioCardFace(page: .property(PropertyPage()))
-        .frame(width: 360, height: 500)
+        .frame(width: UIScreen.main.bounds.width - 25, height: UIScreen.main.bounds.height / 2.8)
         .clipShape(RoundedRectangle(cornerRadius: 24))
 }

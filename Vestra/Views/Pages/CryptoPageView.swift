@@ -1,32 +1,29 @@
 //
-//  ETFPageView.swift
+//  CryptoPageView.swift
 //  Vestra
-//
-//  Created by Matthew Auciello on 25/3/2026.
 //
 
 import SwiftUI
 
-struct ETFPageView: View {
-    
+struct CryptoPageView: View {
+
     @EnvironmentObject private var pageStore: PageStore
-    
+
     let pageId: UUID
     @Binding var pageIndex: Int
     @Binding var path: NavigationPath
-    
+
     var body: some View {
         ZStack {
             Color.theme.background
             VStack {
-                Text("ETF" + " \(pageId)")
+                Text("Crypto" + " \(pageId)")
                 closeButton
             }
         }
         .ignoresSafeArea()
-
     }
-    
+
     var closeButton: some View {
         Button {
             if path.count != 0 {
@@ -47,7 +44,3 @@ struct ETFPageView: View {
         .accessibilityLabel("Close")
     }
 }
-
-//#Preview {
-//    ETFPageView()
-//}

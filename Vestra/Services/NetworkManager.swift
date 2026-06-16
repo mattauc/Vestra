@@ -14,7 +14,7 @@ protocol APIEndpoint {
     var path: String { get }
     var method: HTTPMethod { get }
     var headers: [String: String]? { get }
-    var body: [String: String] { get }
+    var body: Encodable? { get }
 }
 
 // Enum of HTTP Methods
@@ -33,67 +33,106 @@ enum APIError: Error {
     case invalidURL
 }
 
+// Type-erasure wrapper so `Encodable?` (an existential) can be passed to
+// `JSONEncoder.encode<T: Encodable>(_:)` which expects a concrete type.
+private struct AnyEncodable: Encodable {
+    private let _encode: (Encoder) throws -> Void
+    init(_ value: Encodable) {
+        self._encode = value.encode(to:)
+    }
+    func encode(to encoder: Encoder) throws {
+        try _encode(encoder)
+    }
+}
+
 // Enum used to create the property endpoint
 enum PropertyEndpoint: APIEndpoint {
-    case getProperty(streetNumber: String, streetName: String, suburb: String, state: String, postcode: String)
-    
-    var baseURL: URL {
-        return URL(string: "http://localhost:8000")!
+    /// Fire-and-forget enrichment request. Backend enqueues a scrape job and
+    /// the worker writes the enriched data straight into Firestore.
+    /// The `token` is a Firebase ID token used by the backend to verify the user.
+    case enrichProperty(token: String, pageId: String, address: Address)
+
+    struct Address: Codable {
+        let streetNumber: String
+        let streetName: String
+        let suburb: String
+        let state: String
+        let postcode: String
+
+        enum CodingKeys: String, CodingKey {
+            case streetNumber = "street_number"
+            case streetName = "street_name"
+            case suburb
+            case state
+            case postcode
+        }
     }
-    
+
+    struct EnrichBody: Codable {
+        let pageId: String
+        let address: Address
+
+        enum CodingKeys: String, CodingKey {
+            case pageId = "page_id"
+            case address
+        }
+    }
+
+    var baseURL: URL {
+        URL(string: "http://localhost:8000")!
+    }
+
     var path: String {
         switch self {
-        case .getProperty:
-            return "/property/lookup"
+        case .enrichProperty: return "/property/enrich"
         }
     }
-    
+
     var method: HTTPMethod {
         switch self {
-        case .getProperty:
-            return .post
+        case .enrichProperty: return .post
         }
     }
-    
-    var headers: [String : String]? {
+
+    var headers: [String: String]? {
         switch self {
-        case .getProperty:
-            return ["Authorization": "Default"]
+        case .enrichProperty(let token, _, _):
+            return ["Authorization": "Bearer \(token)"]
         }
     }
-    
-    var body: [String : String] {
+
+    var body: Encodable? {
         switch self {
-        case .getProperty(let streetNumber, let streetName, let suburb, let state, let postcode):
-            return ["street_number": streetNumber, "street_name": streetName, "suburb": suburb, "state": state, "postcode": postcode]
+        case .enrichProperty(_, let pageId, let address):
+            return EnrichBody(pageId: pageId, address: address)
         }
     }
 }
 
 class NetworkManager {
     static let shared = NetworkManager()
-    
-    func request<T: Decodable>(_ endpoint: APIEndpoint) async throws -> T {
+
+    /// Fire-and-forget HTTP request. Returns when the server acknowledges (2xx);
+    /// throws if it doesn't.
+    func request(_ endpoint: APIEndpoint) async throws {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        
+
         endpoint.headers?.forEach { key, value in
             request.setValue(value, forHTTPHeaderField: key)
         }
-        
-        if endpoint.method == .post {
+
+        if let body = endpoint.body {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = try JSONEncoder().encode(endpoint.body)
+            request.httpBody = try JSONEncoder().encode(AnyEncodable(body))
         }
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
+
+        let (_, response) = try await URLSession.shared.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse,
-            httpResponse.statusCode == 200 else {
+              (200..<300).contains(httpResponse.statusCode) else {
             throw APIError.invalidResponse
         }
-        
-        return try JSONDecoder().decode(T.self, from: data)
     }
 }

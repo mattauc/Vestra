@@ -1,0 +1,37 @@
+# Firebase — contains API keys, never commit
+GoogleService-Info.plist
+
+# macOS
+.DS_Store
+
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Xcode build products
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods (if ever added)
+Pods/
+Podfile.lock
+
+# Fastlane (if ever added)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Claude Code local settings (machine-specific, not needed in repo)
+.claude/settings.local.json
+.claude/
+CLAUDE.md

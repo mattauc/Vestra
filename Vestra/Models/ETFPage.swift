@@ -11,4 +11,5 @@ struct ETFPage: Codable, Equatable, PagePayload, Hashable {
     var id = UUID()
     var title: String = ""
     var activeInvestment: Bool = true
+    var enrichmentStatus: EnrichmentStatus = .ready
 }
