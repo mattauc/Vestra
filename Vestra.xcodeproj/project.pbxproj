@@ -15,13 +15,19 @@
 		671D95312F738EFA00980992 /* PageTypeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95302F738EFA00980992 /* PageTypeTab.swift */; };
 		671D95332F73954E00980992 /* ETFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95322F73954E00980992 /* ETFPage.swift */; };
 		671D95352F73955C00980992 /* CryptoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D95342F73955C00980992 /* CryptoPage.swift */; };
-		67ED13C52FF1234500980992 /* EnrichmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED13C42FF1234500980992 /* EnrichmentStatus.swift */; };
+		671E56272FE12FBF009D76CE /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E56262FE12FBF009D76CE /* BlockModel.swift */; };
+		671E56AA2FE12FBF009D76CE /* BlockLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E56AB2FE12FBF009D76CE /* BlockLayout.swift */; };
+		671E56292FE63278009D76CE /* EmptyBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E56282FE63278009D76CE /* EmptyBlockCard.swift */; };
+		67C0FFA1000000000000000B /* BlockGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA1000000000000000C /* BlockGridView.swift */; };
 		67473F492FC8490B009131D7 /* CashFlowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F482FC8490B009131D7 /* CashFlowCard.swift */; };
+		67C0FFA10000000000000001 /* FinancialDataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA10000000000000002 /* FinancialDataCard.swift */; };
+		67C0FFA10000000000000003 /* LoanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA10000000000000004 /* LoanCard.swift */; };
+		67C0FFA10000000000000005 /* ExpensesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA10000000000000006 /* ExpensesCard.swift */; };
+		67C0FFA10000000000000007 /* PropertyDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA10000000000000008 /* PropertyDetailCard.swift */; };
 		67473F4B2FC849FB009131D7 /* SalesChartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4A2FC849FB009131D7 /* SalesChartCard.swift */; };
 		67473F4E2FCFA417009131D7 /* ETFPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4D2FCFA417009131D7 /* ETFPageManager.swift */; };
+		67C0FFA10000000000000009 /* BlockPageManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C0FFA1000000000000000A /* BlockPageManaging.swift */; };
 		67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */; };
-		67AAB1010000000000000002 /* ETFProjectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1010000000000000001 /* ETFProjectionCard.swift */; };
-		67AAB1020000000000000002 /* ETFAssumptionsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1020000000000000001 /* ETFAssumptionsCard.swift */; };
 		676603932F73B5160043C8B5 /* ETFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603922F73B5160043C8B5 /* ETFPageView.swift */; };
 		676603972F74FA530043C8B5 /* PropertyPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676603962F74FA530043C8B5 /* PropertyPageManager.swift */; };
 		67725F6A2EB86D0E0049445D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67725F692EB86D0E0049445D /* FirebaseAuth */; };
@@ -34,6 +40,8 @@
 		67725F7E2F6FE1740049445D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F7D2F6FE1740049445D /* SettingsView.swift */; };
 		67725F822F70B0590049445D /* PortfolioPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F812F70B0590049445D /* PortfolioPage.swift */; };
 		67725F852F70F8FF0049445D /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67725F842F70F8FF0049445D /* PageView.swift */; };
+		67AAB1010000000000000002 /* ETFProjectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1010000000000000001 /* ETFProjectionCard.swift */; };
+		67AAB1020000000000000002 /* ETFAssumptionsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAB1020000000000000001 /* ETFAssumptionsCard.swift */; };
 		67AFEBEF2EB74E37003BBF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */; };
 		67AFEBF22EB74E37003BBF06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */; };
 		67AFEBFC2EB74E37003BBF06 /* VestraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AFEBFB2EB74E37003BBF06 /* VestraTests.swift */; };
@@ -56,6 +64,7 @@
 		67D88C332FBAEE8B00304CA2 /* PortfolioTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C322FBAEE8B00304CA2 /* PortfolioTabButton.swift */; };
 		67D88C352FBC0DE700304CA2 /* PageColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C342FBC0DE700304CA2 /* PageColumns.swift */; };
 		67D88C372FBD839100304CA2 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D88C362FBD839100304CA2 /* CustomTabBar.swift */; };
+		67ED13C52FF1234500980992 /* EnrichmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED13C42FF1234500980992 /* EnrichmentStatus.swift */; };
 		69E9C3D76E534100AB396266 /* StatPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0F2EBE6DF49B0ABFC9EA5 /* StatPill.swift */; };
 		736A7B221FAC4A0597471A6E /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927CCDA60B346E79A3DF657 /* Color+Theme.swift */; };
 		88291DFA5FED492C8BAE5119 /* CustomGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BCD9C98D541E580E84A18 /* CustomGroupBox.swift */; };
@@ -95,13 +104,19 @@
 		671D95302F738EFA00980992 /* PageTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTypeTab.swift; sourceTree = "<group>"; };
 		671D95322F73954E00980992 /* ETFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPage.swift; sourceTree = "<group>"; };
 		671D95342F73955C00980992 /* CryptoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPage.swift; sourceTree = "<group>"; };
-		67ED13C42FF1234500980992 /* EnrichmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrichmentStatus.swift; sourceTree = "<group>"; };
+		671E56262FE12FBF009D76CE /* BlockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModel.swift; sourceTree = "<group>"; };
+		671E56AB2FE12FBF009D76CE /* BlockLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLayout.swift; sourceTree = "<group>"; };
+		671E56282FE63278009D76CE /* EmptyBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBlockCard.swift; sourceTree = "<group>"; };
+		67C0FFA1000000000000000C /* BlockGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockGridView.swift; sourceTree = "<group>"; };
 		67473F482FC8490B009131D7 /* CashFlowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowCard.swift; sourceTree = "<group>"; };
+		67C0FFA10000000000000002 /* FinancialDataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataCard.swift; sourceTree = "<group>"; };
+		67C0FFA10000000000000004 /* LoanCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCard.swift; sourceTree = "<group>"; };
+		67C0FFA10000000000000006 /* ExpensesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesCard.swift; sourceTree = "<group>"; };
+		67C0FFA10000000000000008 /* PropertyDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailCard.swift; sourceTree = "<group>"; };
 		67473F4A2FC849FB009131D7 /* SalesChartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesChartCard.swift; sourceTree = "<group>"; };
 		67473F4D2FCFA417009131D7 /* ETFPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageManager.swift; sourceTree = "<group>"; };
+		67C0FFA1000000000000000A /* BlockPageManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockPageManaging.swift; sourceTree = "<group>"; };
 		67473F4F2FD0F82B009131D7 /* ETFBasketCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFBasketCard.swift; sourceTree = "<group>"; };
-		67AAB1010000000000000001 /* ETFProjectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFProjectionCard.swift; sourceTree = "<group>"; };
-		67AAB1020000000000000001 /* ETFAssumptionsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFAssumptionsCard.swift; sourceTree = "<group>"; };
 		676603922F73B5160043C8B5 /* ETFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFPageView.swift; sourceTree = "<group>"; };
 		676603962F74FA530043C8B5 /* PropertyPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPageManager.swift; sourceTree = "<group>"; };
 		67725F6F2EB86DA20049445D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -111,6 +126,8 @@
 		67725F7D2F6FE1740049445D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		67725F812F70B0590049445D /* PortfolioPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPage.swift; sourceTree = "<group>"; };
 		67725F842F70F8FF0049445D /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		67AAB1010000000000000001 /* ETFProjectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFProjectionCard.swift; sourceTree = "<group>"; };
+		67AAB1020000000000000001 /* ETFAssumptionsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFAssumptionsCard.swift; sourceTree = "<group>"; };
 		67AFEBE72EB74E36003BBF06 /* Vestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AFEBEE2EB74E37003BBF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67AFEBF12EB74E37003BBF06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -136,6 +153,7 @@
 		67D88C322FBAEE8B00304CA2 /* PortfolioTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTabButton.swift; sourceTree = "<group>"; };
 		67D88C342FBC0DE700304CA2 /* PageColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageColumns.swift; sourceTree = "<group>"; };
 		67D88C362FBD839100304CA2 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		67ED13C42FF1234500980992 /* EnrichmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrichmentStatus.swift; sourceTree = "<group>"; };
 		724967780AF54519BBD2A9C9 /* PortfolioCardFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCardFace.swift; sourceTree = "<group>"; };
 		7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesEditorSheet.swift; sourceTree = "<group>"; };
 		8398551B9FED4D6290B977D1 /* Font+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Theme.swift"; sourceTree = "<group>"; };
@@ -179,6 +197,10 @@
 			children = (
 				67725F792F6FB9E80049445D /* PropertyPageView.swift */,
 				67473F482FC8490B009131D7 /* CashFlowCard.swift */,
+				67C0FFA10000000000000002 /* FinancialDataCard.swift */,
+				67C0FFA10000000000000004 /* LoanCard.swift */,
+				67C0FFA10000000000000006 /* ExpensesCard.swift */,
+				67C0FFA10000000000000008 /* PropertyDetailCard.swift */,
 				67473F4A2FC849FB009131D7 /* SalesChartCard.swift */,
 				0D8F23DC51234718B7FAFD80 /* LoanEditorSheet.swift */,
 				7D7D2834FB374D5588A5C8A4 /* ExpensesEditorSheet.swift */,
@@ -208,6 +230,8 @@
 				67725F7B2F6FE1500049445D /* PageStoreView.swift */,
 				671D952E2F736EB900980992 /* PageCreation.swift */,
 				67D88C342FBC0DE700304CA2 /* PageColumns.swift */,
+				671E56282FE63278009D76CE /* EmptyBlockCard.swift */,
+				67C0FFA1000000000000000C /* BlockGridView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -310,6 +334,8 @@
 				671D95322F73954E00980992 /* ETFPage.swift */,
 				671D95342F73955C00980992 /* CryptoPage.swift */,
 				67ED13C42FF1234500980992 /* EnrichmentStatus.swift */,
+				671E56262FE12FBF009D76CE /* BlockModel.swift */,
+				671E56AB2FE12FBF009D76CE /* BlockLayout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,6 +356,7 @@
 				67725F772EB8A1980049445D /* PageStore.swift */,
 				676603962F74FA530043C8B5 /* PropertyPageManager.swift */,
 				67473F4D2FCFA417009131D7 /* ETFPageManager.swift */,
+				67C0FFA1000000000000000A /* BlockPageManaging.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -504,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67473F4E2FCFA417009131D7 /* ETFPageManager.swift in Sources */,
+				67C0FFA10000000000000009 /* BlockPageManaging.swift in Sources */,
 				67725F7E2F6FE1740049445D /* SettingsView.swift in Sources */,
 				67725F782EB8A1980049445D /* PageStore.swift in Sources */,
 				67725F7A2F6FB9E80049445D /* PropertyPageView.swift in Sources */,
@@ -537,8 +565,16 @@
 				67D88C372FBD839100304CA2 /* CustomTabBar.swift in Sources */,
 				1BEC91787A244426B3C9C8C5 /* Font+Theme.swift in Sources */,
 				67473F492FC8490B009131D7 /* CashFlowCard.swift in Sources */,
+				67C0FFA10000000000000001 /* FinancialDataCard.swift in Sources */,
+				67C0FFA10000000000000003 /* LoanCard.swift in Sources */,
+				67C0FFA10000000000000005 /* ExpensesCard.swift in Sources */,
+				67C0FFA10000000000000007 /* PropertyDetailCard.swift in Sources */,
 				2862F3D1141A443EB2A99F07 /* BentoVLogo.swift in Sources */,
+				671E56292FE63278009D76CE /* EmptyBlockCard.swift in Sources */,
+				67C0FFA1000000000000000B /* BlockGridView.swift in Sources */,
 				D3F48960E81D4FB8ABD0ED22 /* StriatedPlaceholder.swift in Sources */,
+				671E56272FE12FBF009D76CE /* BlockModel.swift in Sources */,
+				671E56AA2FE12FBF009D76CE /* BlockLayout.swift in Sources */,
 				67473F502FD0F82B009131D7 /* ETFBasketCard.swift in Sources */,
 				67AAB1010000000000000002 /* ETFProjectionCard.swift in Sources */,
 				67AAB1020000000000000002 /* ETFAssumptionsCard.swift in Sources */,
@@ -638,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -697,7 +733,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -773,7 +809,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -791,7 +827,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.mauc.VestraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

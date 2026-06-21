@@ -8,41 +8,28 @@
 import SwiftUI
 
 struct ETFPageView: View {
-    
+
     @EnvironmentObject private var pageStore: PageStore
     @StateObject private var manager: ETFPageManager
-    
+
     let pageId: UUID
     @Binding var pageIndex: Int
     @Binding var path: NavigationPath
-    
+
     init(pageId: UUID, pageStore: PageStore, pageIndex: Binding<Int>, path: Binding<NavigationPath>) {
         self.pageId = pageId
         _pageIndex = pageIndex
         _path = path
         _manager = StateObject(wrappedValue: ETFPageManager(pageId: pageId, pageStore: pageStore))
     }
-    
+
     var body: some View {
         ZStack {
             Color.theme.depth
                 .ignoresSafeArea()
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack(alignment: .leading, spacing: 7, pinnedViews: [.sectionHeaders]) {
 
-                    ETFProjectionCard()
-                        .padding([.top, .horizontal])
-                        .padding(.bottom, 5)
-
-                    ETFBasketCard(manager: manager)
-                        .padding([.horizontal])
-                        .padding(.bottom, 5)
-
-                    ETFAssumptionsCard()
-                        .padding([.horizontal])
-                        .padding(.bottom, 5)
-                }
-
+            BlockGridView(manager: manager, accent: Color.theme.etf) { block in
+                blockView(for: block)
             }
         }
         .toolbar {
@@ -58,12 +45,38 @@ struct ETFPageView: View {
                 .foregroundStyle(Color.theme.onAsset)
             }
             ToolbarItem(placement: .topBarTrailing) {
+                addEmptyBlockButton
+            }
+            ToolbarSpacer(.fixed, placement: .topBarTrailing)
+            ToolbarItem(placement: .topBarTrailing) {
                 closeButton
             }
         }
-
     }
-    
+
+    /// The only page-specific piece: which card each ETF block kind maps to.
+    @ViewBuilder
+    private func blockView(for block: Block) -> some View {
+        switch block.kind {
+        case .projection: ETFProjectionCard()
+        case .basket: ETFBasketCard(manager: manager)
+        case .assumptions: ETFAssumptionsCard()
+        default: EmptyView()   // non-ETF / placeholder kinds handled by BlockGridView
+        }
+    }
+
+    var addEmptyBlockButton: some View {
+        Button {
+            manager.addRow()
+        } label: {
+            Image(systemName: "plus")
+                .font(.title3)
+                .foregroundStyle(.primary)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Close")
+    }
+
     var closeButton: some View {
         Button {
             if path.count != 0 {

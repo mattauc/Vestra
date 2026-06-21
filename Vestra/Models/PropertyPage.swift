@@ -18,6 +18,8 @@ struct PropertyPage: Codable, Equatable, PagePayload, Hashable {
     var title: String = ""
     var activeInvestment: Bool = true
     var enrichmentStatus: EnrichmentStatus = .ready
+    
+    var rows: [BlockRow] = []
 
     var propertyAddress: String = ""
     var propertyType: PropertyType?
@@ -107,4 +109,15 @@ struct SuburbPerformance: Codable, Equatable, Hashable {
         case cagr3yPercent = "cagr_3y_percent"
         case cagr5yPercent = "cagr_5y_percent"
     }
+}
+
+extension PropertyPage {
+    static let defaultRows: [BlockRow] = [
+        BlockRow(Block(kind: .details)),
+        BlockRow(Block(kind: .financialData)),
+        BlockRow(Block(kind: .salesChart)),
+        BlockRow(Block(kind: .loan)),
+        BlockRow([Block(kind: .expenses), Block(kind: .emptyHalf)]),
+        BlockRow(Block(kind: .empty)),
+    ]
 }

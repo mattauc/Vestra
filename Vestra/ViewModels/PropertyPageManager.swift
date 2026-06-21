@@ -11,8 +11,8 @@ import CoreLocation
 import FirebaseAuth
 
 @MainActor
-final class PropertyPageManager: ObservableObject {
-
+final class PropertyPageManager: ObservableObject, BlockPageManaging {
+    
     private let pageId: UUID
     private let pageStore: PageStore
     private var cancellables = Set<AnyCancellable>()
@@ -37,11 +37,26 @@ final class PropertyPageManager: ObservableObject {
             .sink { [weak self] pages in
                 guard let self else { return }
                 if let portfolio = pages.first(where: { $0.id == self.pageId }),
-                   case .property(let updated) = portfolio {
-                    self.currentPage = updated
-                }
+                   case .property(var updated) = portfolio {
+                    if updated.rows.isEmpty {
+                        updated.rows = PropertyPage.defaultRows
+                    }
+                    self.currentPage = updated                }
             }
             .store(in: &cancellables)
+        
+        if self.currentPage.rows.isEmpty {
+            self.currentPage.rows = ETFPage.defaultRows
+        }
+    }
+    
+    var rows: [BlockRow] {
+        get { currentPage.rows }
+        set { currentPage.rows = newValue }
+    }
+    
+    func persist() {
+        //IDK
     }
     
     var isActive: Bool {

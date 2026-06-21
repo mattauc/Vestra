@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class ETFPageManager: ObservableObject {
+final class ETFPageManager: ObservableObject, BlockPageManaging {
 
     private let pageId: UUID
     private let pageStore: PageStore
@@ -27,7 +27,9 @@ final class ETFPageManager: ObservableObject {
             // Previews (and some edge cases) may initialize before `PageStore` has loaded pages.
             // Default to an empty page instead of crashing.
             self.currentPage = ETFPage()
+            
         }
+        
 
         // Keep currentPage in sync whenever PageStore.pages changes — including
         // updates pushed by the backend worker via the Firestore snapshot listener.
@@ -35,10 +37,30 @@ final class ETFPageManager: ObservableObject {
             .sink { [weak self] pages in
                 guard let self else { return }
                 if let portfolio = pages.first(where: { $0.id == self.pageId }),
-                   case .etf(let updated) = portfolio {
+                   case .etf(var updated) = portfolio {
+                    if updated.rows.isEmpty {
+                        updated.rows = ETFPage.defaultRows
+                    }
                     self.currentPage = updated
                 }
             }
             .store(in: &cancellables)
+
+        if self.currentPage.rows.isEmpty {
+            self.currentPage.rows = ETFPage.defaultRows
+        }
+    }
+
+    // `rows` + the row operations (moveRows / swapBlocks / addRow) come from
+    // BlockPageManaging — this is the only page-specific glue it needs.
+    var rows: [BlockRow] {
+        get { currentPage.rows }
+        set { currentPage.rows = newValue }
+    }
+
+    func persist() {
+        // In-memory only for now (unchanged behaviour). To save reorders to
+        // Firestore, uncomment:
+        // pageStore.updatePage(.etf(currentPage))
     }
 }
